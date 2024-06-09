@@ -1,0 +1,35 @@
+{
+  "name": "maureenetjeremie.fr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:back": "nodemon server.js",
+    "dev:front": "vite",
+    "dev": "concurrently \"npm run dev:back\" \"npm run dev:front\"",
+    "build": "vite build",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Solremi/maureenetjeremie.fr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Solremi/maureenetjeremie.fr/issues"
+  },
+  "homepage": "https://github.com/Solremi/maureenetjeremie.fr#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "i": "^0.3.7",
+    "node": "^20.14.0",
+    "pg": "^8.12.0",
+    "react": "^18.3.1"
+  }
+}
