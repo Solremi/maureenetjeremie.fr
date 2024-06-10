@@ -3,10 +3,13 @@ import './Footer.scss';
 
 export default function Footer() {
     return (
-        <div className="Footer">
             <footer>
-                <p>© Louxel Web 2024 inc</p>
-            </footer>
-        </div>
+            <div className="has-text-centered " >
+            <p>© 2024 Mariage de Maureen & Jérémie</p>
+            <p>
+            <strong>WebSite</strong> by <a href="https://louxelweb.fr">Jeremie Rocquet</a>. The source code is privacy.
+            </p>
+            </div>
+        </footer>
     );
 }
