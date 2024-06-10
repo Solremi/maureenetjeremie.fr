@@ -3,7 +3,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./Home.scss";
 
-function Home() {
+export default function Home() {
   return (
     <div className="Home">
       <Header />
@@ -14,5 +14,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;
