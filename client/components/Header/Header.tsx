@@ -7,7 +7,7 @@ export default function Header() {
             <nav className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
                     <a className="navbar-item" href="/home">
-                    <h2 className="title is-3 has-text-primary-dark">Maureen & Jérémie</h2>
+                    <h2 className="title is-3 has-text-primary">Maureen & Jérémie</h2>
                     </a>
 
                     <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
