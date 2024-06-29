@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import axiosInstance from '../../axios/axios';
 import Footer from '../Footer/Footer';
 import './Signup.scss';
 
 export default function Signup() {
-    // State variables if needed for form data
     const [formData, setFormData] = useState({
         lastname: '',
         firstname: '',
@@ -11,8 +11,8 @@ export default function Signup() {
         password: '',
         confirmPassword: ''
     });
+    const [errorMessage, setErrorMessage] = useState('');
 
-    // Function to handle form input changes
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormData({
@@ -21,11 +21,34 @@ export default function Signup() {
         });
     };
 
-    // Function to handle form submission
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Add your form submission logic here (e.g., validation, API call)
-        console.log('Form submitted:', formData);
+        try {
+            if (formData.password !== formData.confirmPassword) {
+                throw new Error('Les mots de passe ne correspondent pas');
+            }
+            if (formData.password.length < 3) {
+                throw new Error('Le mot de passe doit contenir au moins 8 caractères');
+            }
+            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/.test(formData.password)) {
+                throw new Error('Le mot de passe doit contenir au moins 1 majuscule, 1 minuscule et 1 chiffre');
+            }
+
+            setErrorMessage('');
+
+            const response = await axiosInstance.post('/api/signup', formData);
+            console.log('Form submitted successfully:', response.data);
+
+        } catch (error) {
+            // Handle errors
+            if (error.response) {
+                setErrorMessage(error.response.data.message || 'Erreur du serveur');
+            } else if (error.request) {
+                setErrorMessage('Pas de réponse du serveur');
+            } else {
+                setErrorMessage(error.message);
+            }
+        }
     };
 
     return (
@@ -33,8 +56,7 @@ export default function Signup() {
             <div className="container" id="form-login">
                 <div className="columns is-centered">
                     <div className="column is-half">
-                        <h2 className="title is-3 has-text-centered">Inscription ou <a href="/connexion">Connexion</a>
-                        </h2> 
+                        <h2 id='h2-signup' className="title is-3 has-text-centered">Inscription ou <a href="/connexion">Connexion</a></h2> 
                         <form id="signupForm" onSubmit={handleSubmit}>
                             <div className="field">
                                 <label className="label" htmlFor="lastname">Nom</label>
@@ -92,11 +114,12 @@ export default function Signup() {
                                         type="password"
                                         id="password"
                                         name="password"
-                                        placeholder="Votre mot de passe"
+                                        placeholder="exemple: Motdepasse1"
                                         value={formData.password}
                                         onChange={handleInputChange}
                                         required
                                     />
+                                    <em> minimum: 1 majuscule + 1 minuscule + 1 chiffre</em>
                                 </div>
                             </div>
 
@@ -120,9 +143,11 @@ export default function Signup() {
                                 <button type="submit" className="button is-primary">S'inscrire</button>
                             </div>
                         </form>
-                        <div className="container">
-                            <p className="error-message has-text-danger">{/* Error message display */}</p>
-                        </div>
+                        {errorMessage && (
+                            <div className="container">
+                                <p className="error-message has-text-danger">{errorMessage}</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
