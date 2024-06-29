@@ -18,14 +18,14 @@ export default function Header() {
                 </div>
                 <div id="navbar" className="navbar-menu">
                     <div className="navbar-end">
-                        <a className="navbar-item" href="/home">
-                            Home
+                        <a className="navbar-item" href="/inscription">
+                            Inscription
                         </a>
-                        <a className="navbar-item" href="/about">
-                            About
+                        <a className="navbar-item" href="/connexion">
+                            Connexion
                         </a>
-                        <a className="navbar-item" href="/contact">
-                            Contact
+                        <a className="navbar-item" href="/livre d'or">
+                            livre d'or
                         </a>
                     </div>
                 </div>

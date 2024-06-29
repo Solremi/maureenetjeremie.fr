@@ -13,7 +13,7 @@ export default function Home() {
                     <figure className="image is-150x150 is-inline-block">
                         <img id="img-main" className="is-rounded" src="/images/MaureenEtJérémie.webp" alt="photo de Maureen et Jérémie, les mariés." />
                     </figure>
-                    <h1 className="title"> Bienvenue sur le site de mariage de Maureen et Jérémie</h1>
+                    <h1 className="title"> Bienvenue sur notre site de mariage</h1>
                     <p className="subtitle">
                         Tu es sur le point de voir ce que tu n'as jamais vu ! 
                     </p>
