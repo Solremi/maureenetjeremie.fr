@@ -10,10 +10,20 @@ class SignupDataMapper {
     try {
         await this.pool.query(query, values);
     } catch (error) {
-        console.error('Erreur lors de la création de l\'utilisateur:', error);
         throw error;
     }
-}
+  }
+
+  async findUserByEmail(email) {
+    const query = 'SELECT * FROM "user" WHERE email = $1';
+    const values = [email];
+    try {
+        const { rows } = await this.pool.query(query, values);
+        return rows[0];
+    } catch (error) {
+        throw error;
+    }
+  }
 }
 
 export default SignupDataMapper;

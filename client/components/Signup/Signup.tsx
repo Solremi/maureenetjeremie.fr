@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axiosInstance from '../../axios/axios';
 import Footer from '../Footer/Footer';
 import './Signup.scss';
+import { set } from 'zod';
 
 export default function Signup() {
     const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ export default function Signup() {
         confirmPassword: ''
     });
     const [errorMessage, setErrorMessage] = useState('');
+    const [message, setMessage] = useState('');
+
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -28,21 +31,26 @@ export default function Signup() {
                 throw new Error('Les mots de passe ne correspondent pas');
             }
             if (formData.password.length < 3) {
-                throw new Error('Le mot de passe doit contenir au moins 8 caractères');
+                throw new Error('Le mot de passe doit contenir au moins 3 caractères');
             }
             if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/.test(formData.password)) {
                 throw new Error('Le mot de passe doit contenir au moins 1 majuscule, 1 minuscule et 1 chiffre');
             }
 
             setErrorMessage('');
-
+            setMessage('');
             const response = await axiosInstance.post('/api/signup', formData);
-            console.log('Form submitted successfully:', response.data);
+
+            setMessage('SUPER ! Inscription effectuée avec succès. Maintenant tu dois attendre que je valide ton inscription. Merci de ta patience.');
+
 
         } catch (error) {
-            // Handle errors
             if (error.response) {
-                setErrorMessage(error.response.data.message || 'Erreur du serveur');
+                if (error.response.status === 409) {
+                    setErrorMessage('ah ben non, cet utilisateur est déjà inscrit');
+                } else {
+                    setErrorMessage(error.response.data.message || 'Erreur du serveur');
+                }
             } else if (error.request) {
                 setErrorMessage('Pas de réponse du serveur');
             } else {
@@ -140,12 +148,17 @@ export default function Signup() {
                             </div>
 
                             <div className="control form-button">
-                                <button type="submit" className="button is-primary">S'inscrire</button>
+                                <button type="submit" className="button">S'inscrire</button>
                             </div>
                         </form>
+                        {message && (
+                            <div className="container">
+                                <p className="success-message">{message}</p>
+                            </div>
+                        )}
                         {errorMessage && (
                             <div className="container">
-                                <p className="error-message has-text-danger">{errorMessage}</p>
+                                <p className="error-message">{errorMessage}</p>
                             </div>
                         )}
                     </div>
