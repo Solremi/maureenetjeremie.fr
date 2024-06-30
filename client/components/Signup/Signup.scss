@@ -3,11 +3,13 @@
 
 form {
     padding: 2rem;
+
 }
 
 #h2-signup {
-    margin-top: 1rem;
-    margin: 1rem;
+    margin-top: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .error-message {
@@ -30,7 +32,7 @@ form {
     margin : 1rem;
 }
 
-.button {
+form .button {
     background-color: v.$color-primary;
     text-align: center;
     color: white;
@@ -39,4 +41,21 @@ form {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 1rem;
+
+    &:hover {
+        background-color: v.$color-secondary;
+        color: black;
+    }
+}
+
+#connexion {
+    color: v.$color-tertiary;
+
+    &:hover {
+        color: v.$color-primary;
+    }
+}
+
+#em{
+    font-size: 0.7rem;
 }

@@ -64,7 +64,7 @@ export default function Signup() {
             <div className="container" id="form-login">
                 <div className="columns is-centered">
                     <div className="column is-half">
-                        <h2 id='h2-signup' className="title is-3 has-text-centered">Inscription ou <a href="/connexion">Connexion</a></h2> 
+                        <h2 id='h2-signup' className="title is-3 has-text-centered">Inscription ou <a href="/connexion" id='connexion'>Connexion</a></h2> 
                         <form id="signupForm" onSubmit={handleSubmit}>
                             <div className="field">
                                 <label className="label" htmlFor="lastname">Nom</label>
@@ -127,7 +127,7 @@ export default function Signup() {
                                         onChange={handleInputChange}
                                         required
                                     />
-                                    <em> minimum: 1 majuscule + 1 minuscule + 1 chiffre</em>
+                                    <em id='em'> minimum: 1 majuscule + 1 minuscule + 1 chiffre</em>
                                 </div>
                             </div>
 
