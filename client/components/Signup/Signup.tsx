@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axiosInstance from '../../axios/axios';
 import Footer from '../Footer/Footer';
 import './Signup.scss';
-import { set } from 'zod';
 
 export default function Signup() {
     const [formData, setFormData] = useState({
@@ -64,7 +63,7 @@ export default function Signup() {
             <div className="container" id="form-login">
                 <div className="columns is-centered">
                     <div className="column is-half">
-                        <h2 id='h2-signup' className="title is-3 has-text-centered">Inscription ou <a href="/connexion" id='connexion'>Connexion</a></h2> 
+                        <h2 id='h2-signup' className="title is-3 has-text-centered">Inscription ou <a href="/login" id='connexion'>Connexion</a></h2> 
                         <form id="signupForm" onSubmit={handleSubmit}>
                             <div className="field">
                                 <label className="label" htmlFor="lastname">Nom</label>

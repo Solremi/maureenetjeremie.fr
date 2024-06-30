@@ -1,0 +1,8 @@
+@use 'sass:color';
+@use '../../styles/variables' as v;
+
+h2 #ici {
+    &:hover {
+        color: v.$color-primary;
+    }
+}
