@@ -41,16 +41,16 @@ export default function Header() {
                 </div>
                 <div id="navbar" className="navbar-menu">
                     <div className="navbar-end">
-                        <Link id="items" className="navbar-item" to="/livre d'or">
+                        <Link id="items" className="navbar-item" to="/guestbook">
                             Livre d'or
                         </Link>
-                        <Link id="items" className="navbar-item" to="/photos">
+                        <Link id="items" className="navbar-item" to="/pictures">
                             Photos
                         </Link>
                         <Link id="items" className="navbar-item" to="/quizz">
                             Quizz
                         </Link>
-                        <Link id="items" className="navbar-item" to="/contact">
+                        <Link id="items" className="navbar-item" to="/place">
                             C'est où ?
                         </Link>
                         <button id="items" className="navbar-item" onClick={handleLogout}>
