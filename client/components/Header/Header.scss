@@ -1,7 +1,7 @@
 @use '../../styles/variables' as v;
 
 #nav{
-    background-color: black;
+    background-color: v.$color-primary;
 }
 
 .navbar-end{
@@ -12,15 +12,20 @@
     color: v.$color-secondary;
     &:hover{
         color: black;
+        background-color: v.$color-secondary;
     }
 }
 
-#title-header{
+#items-title{
     color: v.$color-secondary;
+    font-size: 2rem;
+    font-weight: bold;
     &:hover{
         color: black;
+        background-color: v.$color-secondary;
     }
 }
+
 
 @media (min-width: 1024px) {
     .navbar-brand{

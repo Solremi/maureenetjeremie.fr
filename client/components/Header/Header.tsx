@@ -6,6 +6,15 @@ import axiosInstance from '../../axios/axios';
 export default function Header() {
     const navigate = useNavigate();
 
+    const handleBurger = () => {
+        const burger = document.querySelector('.navbar-burger');
+        const menu = document.querySelector('.navbar-menu');
+        if (burger && menu) {
+            burger.classList.toggle('is-active');
+            menu.classList.toggle('is-active');
+        }
+    }
+
     const handleLogout = async () => {
         try {
             await axiosInstance.post('/api/logout');
@@ -19,11 +28,12 @@ export default function Header() {
         <header>
             <nav id="nav" className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
-                    <Link className="navbar-item" to="/home">
-                        <h2 id="title-header" className="title is-3">Maureen & Jérémie</h2>
+                    <Link id="items-title" className="navbar-item" to="/home">
+                        Maureen & Jérémie 
                     </Link>
 
-                    <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={handleBurger}>
+                        <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>

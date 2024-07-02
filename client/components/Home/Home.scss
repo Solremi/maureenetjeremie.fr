@@ -1,11 +1,11 @@
 @use '../../styles/variables' as v;
 
 .hero-body {
-  background-color: v.$color-primary;
+  background-color: v.$color-secondary;
 }
 
  #title-h1 {
     margin-top: 5%;
     margin-bottom: -5%;
-    color: white;
+    color: v.$color-primary;
 }
