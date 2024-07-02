@@ -19,6 +19,8 @@ class LoginDataMapper {
       throw error;
     }
   }
+
+  
 }
 
 export default LoginDataMapper;

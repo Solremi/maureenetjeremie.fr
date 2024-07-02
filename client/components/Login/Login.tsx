@@ -4,24 +4,31 @@ import axiosInstance from '../../axios/axios';
 import Footer from '../Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 
-
 export default function Login() {
     const [firstname, setFirstname] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
+        setError('');
 
         try {
             const response = await axiosInstance.post('/api/login', {
-                firstname: firstname,
-                password: password
+                firstname,
+                password
             });
-            console.log(response.data);
-            navigate('/home');
 
+            if (response.status === 200) {
+                navigate('/home');
+            }
         } catch (error) {
+            if (error.response && error.response.status === 401) {
+                setError('Erreur : prénom et/ou mot de passe incorrect.');
+            } else {
+                setError('Une erreur est survenue. Veuillez réessayer.');
+            }
             console.log(error);
         }
     };
@@ -62,6 +69,8 @@ export default function Login() {
                                 />
                             </div>
                         </div>
+
+                        {error && <p className="has-text-danger">{error}</p>}
 
                         <div className="control form-button">
                             <button id="button-login" className="button is-primary is-danger">Connexion</button>

@@ -26,7 +26,16 @@ export const loginUser = async (req, res) => {
         return res.status(200).json({ message: "Connexion réussie" });
 
     } catch (error) {
-        console.error(error);
         return res.status(500).json({ error: "Erreur interne du serveur" });
     }
 };
+
+export const logoutUser = async (req, res) => {
+    try {
+        req.session.destroy();
+        return res.status(200).json({ message: "Déconnexion réussie" });
+
+    } catch (error) {
+        return res.status(500).json({ error: "Erreur interne du serveur" });
+    }
+}
