@@ -1,5 +1,5 @@
 import pool from '../../config/pg.config.js';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import LoginDataMapper from '../datamappers/login.datamapper.js';
 
 const loginDataMapper = new LoginDataMapper(pool);
@@ -12,7 +12,7 @@ export const loginUser = async (req, res) => {
     }
 
     try {
-        const user = await loginDataMapper.findUserByNameAndPassword(firstname);
+        const user = await loginDataMapper.findUserByName(firstname);
 
         if (!user) {
             return res.status(401).json({ error: "Prénom ou mot de passe incorrect" });

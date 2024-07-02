@@ -1,15 +1,14 @@
+
 class LoginDataMapper {
   constructor(pool) {
     this.pool = pool;
   }
 
-  async findUserByNameAndPassword(firstname) {
+  async findUserByName(firstname) {
     const query = `
     SELECT *
     FROM "user"
-    INNER JOIN "password"
-    ON "user".id = "password".id
-    WHERE "firstname" = $1; 
+    WHERE "firstname" = $1;
     `;
 
     const values = [firstname];

@@ -1,1 +1,29 @@
 @use '../../styles/variables' as v;
+
+#nav{
+    background-color: black;
+}
+
+.navbar-end{
+    margin-right: 10%;
+}
+
+#items{
+    color: v.$color-secondary;
+    &:hover{
+        color: black;
+    }
+}
+
+#title-header{
+    color: v.$color-secondary;
+    &:hover{
+        color: black;
+    }
+}
+
+@media (min-width: 1024px) {
+    .navbar-brand{
+        margin-left: 10%;
+    }
+}
