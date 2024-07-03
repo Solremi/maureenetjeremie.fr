@@ -1,7 +1,6 @@
-
 BEGIN;
 
-DROP TABLE IF EXISTS "message", "question", "user";
+DROP TABLE IF EXISTS "message", "question", "user" CASCADE;
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY UNIQUE,
@@ -13,7 +12,6 @@ CREATE TABLE "user" (
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ
 );
-
 
 CREATE TABLE "question" (
     "id" SERIAL PRIMARY KEY UNIQUE,
@@ -28,17 +26,13 @@ CREATE TABLE "question" (
     "difficulty"  TEXT NOT NULL
 );
 
-
 CREATE TABLE "message" (
     "id" SERIAL PRIMARY KEY UNIQUE,
     "content"    TEXT NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    "updated_at" TIMESTAMPTZ
+    "updated_at" TIMESTAMPTZ,
+    "user_id"    INT NOT NULL,
+    FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE
 );
 
 COMMIT;
-
-
-
-
-

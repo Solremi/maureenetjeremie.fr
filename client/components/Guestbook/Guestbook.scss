@@ -1,2 +1,37 @@
 @use 'sass:color';
 @use '../../styles/variables' as v;
+
+.goldenbook {
+    .hero-body {
+      text-align: center;
+    }
+  
+    #container-message {
+      margin-top: 20px;
+  
+      #form-message {
+        margin-bottom: 20px;
+      }
+  
+      #messages {
+        .box {
+          margin-bottom: 10px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+  
+        .message-content {
+          font-size: 1.2em;
+          margin-bottom: 5px;
+        }
+  
+        .message-author {
+          font-size: 1em;
+          color: #555;
+          text-align: right;
+        }
+      }
+    }
+  }
+  

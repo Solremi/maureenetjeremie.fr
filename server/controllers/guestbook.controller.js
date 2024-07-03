@@ -1,30 +1,34 @@
-import GuestbookDataMapper from "../datamappers/guestbook.datamapper.js";
+import GuestbookDataMapper from '../datamappers/guestbook.datamapper.js';
 import pool from '../../config/pg.config.js';
 
 const guestbookDataMapper = new GuestbookDataMapper(pool);
 
-export const addMessage = async (req, res) => {
-    const { message } = req.body;
+export const createMessage = async (req, res) => {
+  try {
+    const { content } = req.body;
 
-    if ( !message) {
-        return res.status(400).json({ error: "Tu dois écrire un message" });
+    if (!req.session.user) {
+      console.error('Unauthorized: No user in session');
+      return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    try {
-        const entry = await guestbookDataMapper.addEntry(req.body);
-        return res.status(201).json(entry);
+    const userId = req.session.user.id;
+    console.log('User ID:', userId);
 
-    } catch (error) {
-        return res.status(500).json({ error: "Erreur interne du serveur" });
-    }
-}
+    const newMessage = await guestbookDataMapper.addEntry({ content, userId });
+    res.status(201).json(newMessage);
+  } catch (error) {
+    console.error('Error creating message:', error.message);
+    res.status(500).json({ error: error.message });
+  }
+};
 
-export const getMessage = async (req, res) => {
-    try {
-        const entries = await guestbookDataMapper.getEntries();
-        return res.status(200).json(entries);
-
-    } catch (error) {
-        return res.status(500).json({ error: "Erreur interne du serveur" });
-    }
-}
+export const showGuestbookMessages = async (req, res) => {
+  try {
+    const messages = await guestbookDataMapper.getEntries();
+    res.status(200).json(messages);
+  } catch (error) {
+    console.error('Error fetching messages:', error.message);
+    res.status(500).json({ error: error.message });
+  }
+};

@@ -37,6 +37,13 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  console.log('Session:', req.session);
+  next();
+});
+
+
+
 app.use(router);
 
 /* a mettre en production avec index.html dans le dossier public

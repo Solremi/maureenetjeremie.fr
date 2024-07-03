@@ -8,6 +8,7 @@ export default function Goldenbook() {
     const [content, setContent] = useState("");
     const [messages, setMessages] = useState([]);
     const [error, setError] = useState("");
+    const [userName, setUserName] = useState("");
 
     const fetchMessages = async () => {
         try {
@@ -20,16 +21,33 @@ export default function Goldenbook() {
         }
     };
 
+    const fetchUser = async () => {
+        try {
+            const response = await axiosInstance.get('/api/session');
+            if (response.status === 200) {
+                setUserName(response.data.firstname);
+            }
+        } catch (err) {
+            setError("Impossible de récupérer les informations de l'utilisateur.");
+        }
+    };
+
     useEffect(() => {
         fetchMessages();
+        fetchUser();
     }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (!userName) {
+            setError("Vous devez être connecté pour créer un message.");
+            return;
+        }
+
         try {
-            const userName = session.firstname; 
-            const response = await axiosInstance.post('/api/guestbook', { content, userName });
-            if (response.status === 200) {
+            const response = await axiosInstance.post('/api/guestbook', { content });
+            if (response.status === 201) {
                 setContent("");
                 setError("");
                 fetchMessages();
@@ -70,7 +88,8 @@ export default function Goldenbook() {
                     <div id="messages" className="content">
                         {messages.map((message, index) => (
                             <div key={index} className="box">
-                                <p className="subtitle is-6"><strong>{message.userName}:</strong> {message.content}</p>
+                                <p className="message-content">{message.content}</p>
+                                <p className="message-author">- {message.firstname}</p>
                             </div>
                         ))}
                     </div>

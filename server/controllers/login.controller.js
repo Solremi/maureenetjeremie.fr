@@ -19,10 +19,13 @@ export const loginUser = async (req, res) => {
         }
 
         const validPassword = await bcrypt.compare(password, user.password);
-        
+
         if (!validPassword) {
             return res.status(401).json({ error: "Prénom ou mot de passe incorrect" });
         }
+
+        req.session.user = user;
+
         return res.status(200).json({ message: "Connexion réussie" });
 
     } catch (error) {
