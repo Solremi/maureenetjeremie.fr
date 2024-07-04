@@ -19,8 +19,8 @@ const app = express();
 const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
 
-app.use(bodyParser.json({ limit: '1000mb' })); // Support for large image payloads
-app.use(bodyParser.urlencoded({ limit: '1000mb', extended: true }));
+app.use(bodyParser.json({ limit: '10mb' })); // Support for large image payloads
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 // Middleware pour parser les corps de requêtes
 app.use(express.urlencoded({ extended: true }));
@@ -40,12 +40,6 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  console.log('Session:', req.session);
-  next();
-});
-
-
 
 app.use(router);
 
@@ -54,9 +48,6 @@ app.use('*', (req, res) => {
   res.sendFile('index.html', { root: path.join(__dirname, './public') });
 });
 */
-
-
-
 
 httpServer.listen(PORT, () => {
 });

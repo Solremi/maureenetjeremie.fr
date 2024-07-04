@@ -1,9 +1,10 @@
+import pool from '../../config/pg.config.js';
+
 
 export default class PictureDataMapper {
-
-    constructor(pool) {
+    constructor() {
         this.pool = pool;
-      }
+    }
 
     async create({ name, data }) {
         const result = await this.pool.query(
