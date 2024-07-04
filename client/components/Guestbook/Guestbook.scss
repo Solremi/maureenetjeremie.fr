@@ -2,14 +2,18 @@
 @use '../../styles/variables' as v;
 
 #container-global {
-  width: 100vw;
+  min-width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+  padding-right: 2%;
+  padding-left: 2%;
+  background-color: v.$color-secondary;
 }
 
 #div-title {
-  background-color: #ecd659;
+  background-color: rgba(204, 176, 20, 0.808);
+  min-width: 60%;
   color: v.$color-text;
   padding: 1rem;
   margin-top: 5%;
@@ -22,11 +26,11 @@
   }
 }
 
-#button-addMessage {
+#button {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   border: none;
   margin-top: 2rem;
-  width: 6rem;
+  min-width: 10%;
 }
 
 #button-addMessage:hover {
@@ -37,17 +41,14 @@
 #container-card {
   display: flex;
   flex-wrap: wrap;
-  max-width: 100vh;
+  min-width: 99%;
   color: v.$color-text;
-  margin: 1rem;
+  margin-bottom: 2rem;
   border-radius: 1rem;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 
-  .card {
-    background-color: #ecd659;
-    max-width: 98%;
-    margin: 1rem;
-    padding: 1rem;
+  #cards {
+    margin: 3%;
     border-radius: 1rem;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
@@ -58,13 +59,13 @@
 
     .message-content {
       font-size: 1.2em;
-      margin-bottom: 5px;
       color: v.$color-text;
     }
 
     .message-author {
       font-size: 1em;
-      color: red;
+      color: v.$color-primary;
+      font-style: italic;
       text-align: right;
     }
   }

@@ -37,8 +37,8 @@ CREATE TABLE "message" (
 
 CREATE TABLE "picture" (
     "id" SERIAL PRIMARY KEY UNIQUE,
-    "name" VARCHAR(255) NOT NULL,
-    "data" TEXT NOT NULL,
+    "name" TEXT,
+    "data" TEXT,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ
 );

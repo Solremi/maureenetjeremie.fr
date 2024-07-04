@@ -61,8 +61,8 @@ export default function Goldenbook() {
     return (
         <div className="goldenbook">
             <Header />
-            <div className="container">
-                <div id="div-title" className="box hero-body has-background-warning has-text-centered">
+            <div id="container-global" className="container">
+                <div id="div-title" className="box hero-body has-text-centered">
                     <h1 className="title is-2 has-text-white">Livre d'or</h1>
                     <p className="subtitle has-text-centered has-text-white">Écris-nous un petit mot, ça fait toujours plaisir</p>
                 </div>
@@ -82,7 +82,7 @@ export default function Goldenbook() {
                         </div>
                         {error && <p className="has-text-danger">{error}</p>}
                         <div className="control has-text-centered">
-                            <button type="submit" className="button is-warning is-medium">
+                            <button id="button" type="submit" className="button  is-medium">
                                 Envoyer
                             </button>
                         </div>
@@ -90,10 +90,10 @@ export default function Goldenbook() {
                 </div>
                 <div>
                     <p className="title is-4">Messages</p>
-                    <div className="columns is-multiline">
+                    <div id="container-card" className="columns is-multiline">
                         {messages.map((message, index) => (
-                            <div key={index} className="column is-one-third">
-                                <div className="card">
+                            <div id="cards" key={index} className="column is-one-third">
+                                <div  className="card">
                                     <div className="card-content">
                                         <p className="message-content">{message.content}</p>
                                         <p className="message-author has-text-right">{message.firstname}</p>

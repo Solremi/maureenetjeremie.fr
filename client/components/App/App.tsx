@@ -4,7 +4,7 @@ import Home from '../Home/Home';
 import Signup from '../Signup/Signup';
 import Login from '../Login/Login';
 import Guestbook from '../Guestbook/Guestbook';
-import Picture from '../Pictures/Picture';
+import Picture from '../Picture/Picture';
 import Place from '../Place/Place';
 import Quizz from '../Quizz/Quizz';
 

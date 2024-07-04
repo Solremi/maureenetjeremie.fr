@@ -1,0 +1,49 @@
+@use 'sass:color';
+@use '../../styles/variables' as v;
+
+
+#container-gallerie{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2%;
+    padding-left: 2%;
+    background-color: v.$color-secondary ;
+}
+
+#container-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2% ;
+    min-width: 40% ;
+    background-color: v.$color-tertiary ;
+
+    h1{
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 3rem;
+        color: v.$color-primary ;
+    }
+
+    #text{
+        text-align: justify;
+        max-width: 55%;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: v.$color-primary ;
+    }
+}
+
+.input{
+   
+    background-color: v.$color-tertiary;
+}
+
+#picture-name {
+  font-size: 0.8rem;
+}
+
