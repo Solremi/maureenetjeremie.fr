@@ -89,7 +89,7 @@ export default function Goldenbook() {
                         <p className="title is-4">Messages</p>
                         <div id="container-card" className="content">
                             {messages.map((message, index) => (
-                                <div id="card" key={index} className="card mb-3">
+                                <div id="card" key={index} className="card ">
                                     <p className="message-content">{message.content}</p>
                                     <p className="message-author"> {message.firstname}</p>
                                 </div>

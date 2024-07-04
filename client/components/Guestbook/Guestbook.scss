@@ -48,7 +48,7 @@
 
   .card {
     background-color: #ecd659;
-    width: 30%;
+    max-width: 98%;
     margin: 1rem;
     padding: 1rem;
     border-radius: 1rem;
@@ -62,11 +62,12 @@
     .message-content {
       font-size: 1.2em;
       margin-bottom: 5px;
+      color: v.$color-text;
     }
 
     .message-author {
       font-size: 1em;
-      color: #555;
+      color: red;
       text-align: right;
     }
   }
