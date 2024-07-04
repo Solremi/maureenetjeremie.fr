@@ -90,11 +90,11 @@ export default function Goldenbook() {
                 </div>
                 <div>
                     <p className="title is-4">Messages</p>
-                    <div id="container-card" className="columns is-multiline">
+                    <div id="container-card" className="columns">
                         {messages.map((message, index) => (
-                            <div id="cards" key={index} className="column is-one-third">
-                                <div  className="card">
-                                    <div className="card-content">
+                            <div id="cards" key={index} className="column">
+                                <div className="card">
+                                    <div id="one-card" className="card-content">
                                         <p className="message-content">{message.content}</p>
                                         <p className="message-author has-text-right">{message.firstname}</p>
                                     </div>

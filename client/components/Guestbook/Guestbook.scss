@@ -33,7 +33,7 @@
   min-width: 10%;
 }
 
-#button-addMessage:hover {
+#button:hover {
   transform: translateY(-2px);
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -48,6 +48,7 @@
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 
   #cards {
+    min-width: 90%;
     margin: 3%;
     border-radius: 1rem;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
@@ -68,5 +69,8 @@
       font-style: italic;
       text-align: right;
     }
+  }
+  #one-card {
+   background-color: v.$color-secondary;
   }
 }
