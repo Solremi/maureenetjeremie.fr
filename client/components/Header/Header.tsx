@@ -50,7 +50,7 @@ export default function Header() {
                         <Link id="items" className="navbar-item" to="/quizz">
                             Quizz
                         </Link>
-                        <Link id="items" className="navbar-item" to="/place">
+                        <Link id="items" className="navbar-item" to="/thePlaceToBe">
                             C'est où ?
                         </Link>
                         <button id="items" className="navbar-item" onClick={handleLogout}>

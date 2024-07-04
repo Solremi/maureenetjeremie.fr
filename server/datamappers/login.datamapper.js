@@ -1,5 +1,6 @@
 
-class LoginDataMapper {
+
+export default class LoginDataMapper {
   constructor(pool) {
     this.pool = pool;
   }
@@ -18,9 +19,5 @@ class LoginDataMapper {
     } catch (error) {
       throw error;
     }
-  }
-
-  
+  } 
 }
-
-export default LoginDataMapper;

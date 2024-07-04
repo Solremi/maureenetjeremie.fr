@@ -6,7 +6,7 @@ import router from './server/routers/main.router.js';
 import session from 'express-session';
 import cors from 'cors';
 import corsOptions from './config/cors.config.js';
-
+import bodyParser from 'body-parser';
 /*
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -18,6 +18,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
+
+app.use(bodyParser.json({ limit: '1000mb' })); // Support for large image payloads
+app.use(bodyParser.urlencoded({ limit: '1000mb', extended: true }));
 
 // Middleware pour parser les corps de requêtes
 app.use(express.urlencoded({ extended: true }));
@@ -51,6 +54,7 @@ app.use('*', (req, res) => {
   res.sendFile('index.html', { root: path.join(__dirname, './public') });
 });
 */
+
 
 
 

@@ -1,10 +1,10 @@
 import bcrypt from 'bcryptjs';
 import pool from '../../config/pg.config.js';
-import UserDataMapper from '../datamappers/signup.datamapper.js';
+import SignupDataMapper from '../datamappers/signup.datamapper.js';
 import emailValidator from 'email-validator';
 import { userSchema } from '../../config/userValidator.config.js';
 
-const userDataMapper = new UserDataMapper(pool);
+const signDataMapper = new SignupDataMapper(pool);
 
 export const createUser = async (req, res) => {
 
@@ -19,7 +19,7 @@ export const createUser = async (req, res) => {
         return res.status(400).json({ error: "Tous les champs doivent être remplis" });
     }
     
-    const existingUser = await userDataMapper.findUserByEmail(email);
+    const existingUser = await signDataMapper.findUserByEmail(email);
     if (existingUser) {
         return res.status(409).json({ error: "Cet email est déjà utilisé" });
     }
@@ -35,7 +35,7 @@ export const createUser = async (req, res) => {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    await userDataMapper.createUser( lastname, firstname, email, hashedPassword);
+    await signDataMapper.createUser( lastname, firstname, email, hashedPassword);
     return res.status(201).json({ message: "Utilisateur créé" });
 }
 

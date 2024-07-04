@@ -1,5 +1,5 @@
 
-class GuestbookDataMapper {
+export default class GuestbookDataMapper {
     constructor(pool) {
       this.pool = pool;
     }
@@ -34,4 +34,3 @@ class GuestbookDataMapper {
     }
   }
   
-  export default GuestbookDataMapper;

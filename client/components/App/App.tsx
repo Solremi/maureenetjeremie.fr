@@ -4,6 +4,10 @@ import Home from '../Home/Home';
 import Signup from '../Signup/Signup';
 import Login from '../Login/Login';
 import Guestbook from '../Guestbook/Guestbook';
+import Picture from '../Pictures/Picture';
+import Place from '../Place/Place';
+import Quizz from '../Quizz/Quizz';
+
 import './App.scss';
 
 function App() {
@@ -15,6 +19,9 @@ function App() {
                     <Route path = "/" element = {<Signup />} />
                     <Route path = "/login" element = {<Login />} />
                     <Route path = "/guestbook" element = {<Guestbook />} />
+                    <Route path = "/pictures" element = {<Picture />} />
+                    <Route path = "/ThePlaceToBe" element = {<Place />} />
+                    <Route path = "/quizz" element = {<Quizz />} />
                 </Routes>
             </div>
         </Router>

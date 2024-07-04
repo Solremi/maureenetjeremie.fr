@@ -1,4 +1,6 @@
-class SignupDataMapper {
+import pool from '../../config/pg.config.js';
+
+export default class SignupDataMapper {
 
   constructor(pool) {
     this.pool = pool;
@@ -26,4 +28,3 @@ class SignupDataMapper {
   }
 }
 
-export default SignupDataMapper;

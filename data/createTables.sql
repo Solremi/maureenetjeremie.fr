@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS "message", "question", "user" CASCADE;
+DROP TABLE IF EXISTS "message", "question", "user", "picture" CASCADE;
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY UNIQUE,
@@ -33,6 +33,14 @@ CREATE TABLE "message" (
     "updated_at" TIMESTAMPTZ,
     "user_id"    INT NOT NULL,
     FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE
+);
+
+CREATE TABLE "picture" (
+    "id" SERIAL PRIMARY KEY UNIQUE,
+    "name" VARCHAR(255) NOT NULL,
+    "data" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMPTZ
 );
 
 COMMIT;
