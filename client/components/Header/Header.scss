@@ -26,6 +26,9 @@
     }
 }
 
+.navbar-menu.is-active {
+    background-color: black;
+}
 
 @media (min-width: 1024px) {
     .navbar-brand{
