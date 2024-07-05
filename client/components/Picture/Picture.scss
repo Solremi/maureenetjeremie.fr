@@ -2,7 +2,7 @@
 @use '../../styles/variables' as v;
 
 
-#container-gallerie{
+#container-page{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,19 +18,19 @@
     justify-content: center;
     align-items: center;
     margin-top: 2% ;
-    min-width: 40% ;
-    background-color: v.$color-tertiary ;
+    min-width: 40vw ;
+    background-color: v.$color-secondary ;
 
     h1{
         text-align: center;
         margin-top: 1rem;
         font-size: 3rem;
-        color: v.$color-primary ;
+        color: v.$color-primary;
     }
 
     #text{
         text-align: justify;
-        max-width: 55%;
+        max-width: 55vw;
         margin-top: 1rem;
         margin-bottom: 1rem;
         font-size: 1.5rem;
@@ -44,6 +44,22 @@
 }
 
 #picture-name {
-  font-size: 0.8rem;
+  font-size: 20%;
 }
 
+#picture-container{
+    display: flex;
+    justify-content: center;
+    max-width: 90vw;
+    margin-top: 2% ;
+    background-color: v.$color-secondary ;
+
+  
+
+}
+
+@media (max-width: 768px) {
+    #picture-name {
+        display: none;
+      }
+}

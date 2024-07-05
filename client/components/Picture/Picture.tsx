@@ -58,16 +58,16 @@ function ImageUploader() {
     return (
         <div className="picture">
             <Header />
-            <div id="container-gallerie"> 
+            <div id="container-page"> 
                 <div id="container-box" className="box hero-body ">
-                    <h1 title="Gallerie des souvenirs" className="title is-1 has-text-white has-text-centered" id="title-gallery">
+                    <h1 title="Gallerie des souvenirs" className="title is-1  has-text-centered" id="title-gallery">
                         Gallerie des souvenirs
                     </h1>
                     <br />
-                    <p id="text" className="subtitle has-text-centered has-text-white">
-                        Partagez vos plus belles photos avec nous. <br /> <em>formats (.png .jpeg .jpg,webp )</em>
+                    <p id="text" className="subtitle has-text-centered ">
+                        Partagez vos plus belles photos avec nous. <br /> <em>formats (.png .jpeg .jpg, .webp )</em>
                     </p>
-                    <p id="text" className="subtitle has-text-centered has-text-white">
+                    <p id="text" className="subtitle has-text-centered ">
                         Vous pouvez télécharger les photos qui s'affichent ci-dessous en faisant un clique droit à la souris, puis télécharger "enregistrer l'image sous ".
                     </p>
                 </div>
@@ -94,10 +94,10 @@ function ImageUploader() {
 
                 {error && <p className="has-text-danger">{error}</p>}
 
-                <div className="box container is-flex is-flex-wrap-wrap" id="picture-container">
+                <div className="box container is-flex-wrap-wrap" id="picture-container">
                     {images.length > 0 ? (
                         images.map((image, index) => (
-                            <div className="column is-one-quarter" key={index}>
+                            <div id="Onecard" className="column is-full-mobile is-one-third-tablet is-one-quarter-desktop" key={index}>
                                 <div className="card">
                                     <div className="card-image">
                                         <figure className="image">
