@@ -66,7 +66,7 @@ export default function Goldenbook() {
                     <h1 className="title is-2 has-text-white">Livre d'or</h1>
                     <p className="subtitle has-text-centered has-text-white">Écris-nous un petit mot, ça fait toujours plaisir</p>
                 </div>
-                <div className="container">
+                <div className="container-field">
                     <form onSubmit={handleSubmit}>
                         <div className="field">
                             <div className="control">
@@ -90,9 +90,9 @@ export default function Goldenbook() {
                 </div>
                 <div>
                     <p id= "message" className="title is-4">Messages</p>
-                    <div id="container-card" className="columns">
+                    <div id="container-card" className="box container ">
                         {messages.map((message, index) => (
-                            <div id="cards" key={index} className="column is-full-mobile is-one-third-tablet is-one-quarter-desktop">
+                            <div key={index} className="column is-full-mobile is-one-third-tablet is-one-quarter-desktop">
                                 <div className="card">
                                     <div id="one-card" className="card-content">
                                         <p className="message-content">{message.content}</p>

@@ -41,92 +41,37 @@
 #container-card {
   display: flex;
   flex-wrap: wrap;
-  min-width: 99vw;
+  width: 80vw;
   color: v.$color-text;
   margin-bottom: 2rem;
   border-radius: 1rem;
   margin-right: 0.5rem;
   margin-left: 0.5rem;
   box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.2);
-
-  #cards {
-    border-radius: 1rem;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-
-    &:hover {
-      transform: translateY(-5px);
-    }
-
-    .message-content {
-      font-size: 1.2em;
-      color: v.$color-text;
-    }
-
-    .message-author {
-      font-size: 1em;
-      color: v.$color-primary;
-      font-style: italic;
-      text-align: right;
-    }
-  }
+  background-color: v.$color-secondary;
+  
   #one-card {
-    background-color: v.$color-secondary;
+   background-color: rgba(204, 176, 20, 0.808);
   }
 }
 
 #message{
-  margin-left: 3vw;
+  margin-left: 5%;
 }
 
-@media (max-width: 400px) {
-  #container-global {
-    padding-right: 1vw;
-    padding-left: 1vw;
+.message-content{
+  color: v.$color-text;
+}
+.message-author{
+  color: v.$color-primary;
+}
+
+.container-field{
+
+  display: flex;
+  justify-content: center;
+  .field{
+    width: 50vw;
   }
 
-  #div-title {
-    min-width: 90vw;
-    padding: 0.5rem;
-    margin-top: 3vw;
-    margin: 1vw;
-    
-    h1 {
-      margin: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .subtitle {
-      font-size: 1rem;
-    }
-  }
-
-  #container-card {
-    min-width: 98vw;
-    margin-right: 0.2rem;
-    margin-left: 0.2rem;
-    
-    #cards {
-      min-width: 90vw;
-      margin: 0.5rem 0;
-    }
-
-    .message-content {
-      font-size: 1em;
-    }
-
-    .message-author {
-      font-size: 0.9em;
-    }
-  }
-
-  #button {
-    min-width: 30vw;
-    font-size: 0.8rem;
-  }
-
-  #message {
-    margin-left: 1vw;
-    font-size: 1.2rem;
-  }
 }
