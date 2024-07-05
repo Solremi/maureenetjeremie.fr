@@ -101,7 +101,7 @@ function ImageUploader() {
                                 <div className="card">
                                     <div className="card-image">
                                         <figure className="image">
-                                            <img src={image.data} alt={image.name} style={{ width: "100%", height: "auto" }} />
+                                            <img src={image.data} alt={image.name} style={{ width: "100vw", height: "auto" }} />
                                         </figure>
                                     </div>
                                     <div className="card-content">
