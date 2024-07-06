@@ -33,10 +33,10 @@ export default function Header() {
                     </Link>
 
                     <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={handleBurger}>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
+                        <span className="white-line" aria-hidden="true"></span>
+                        <span className="white-line" aria-hidden="true"></span>
+                        <span className="white-line" aria-hidden="true"></span>
+                        <span className="white-line" aria-hidden="true"></span>
                     </a>
                 </div>
                 <div id="navbar" className="navbar-menu">
