@@ -1,15 +1,15 @@
 @use 'sass:color';
 @use '../../styles/variables' as v;
 
-#container-page{
+#contain-page{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: none;
 }
 
 #box{
-    width: 60vh;
+    margin-top: 2rem;
+    width: 60vw;
     background-color: v.$color-tertiary;
 }
