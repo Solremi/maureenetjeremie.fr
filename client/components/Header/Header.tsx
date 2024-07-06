@@ -47,9 +47,6 @@ export default function Header() {
                         <Link id="items" className="navbar-item" to="/pictures">
                             Photos
                         </Link>
-                        <Link id="items" className="navbar-item" to="/quizz">
-                            Quizz
-                        </Link>
                         <Link id="items" className="navbar-item" to="/thePlaceToBe">
                             C'est où ?
                         </Link>

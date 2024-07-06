@@ -7,14 +7,12 @@ export default function Place() {
     return (
         <div className="place">
             <Header />
-            <div className="box hero-body has-background-danger">
-                <h1 title="Lieu de la cérémonie" className="title is-1 has-text-white has-text-centered" id="title-gallery">
-                    Lieu de la cérémonie
-                </h1>
-                <br />
-                <p className="subtitle has-text-centered has-text-white">
-                    La cérémonie aura lieu à la mairie de la ville de Pecquencourt.
-                </p>
+            <div id="container-page" className="container">
+                <div id="box" className="box hero-body">
+                    <h1 title="Lieu de la cérémonie" className="title is-1 has-text-white has-text-centered" id="title-gallery">
+                        Informations utiles
+                    </h1>
+                </div>
             </div>
             <Footer />
         </div>
