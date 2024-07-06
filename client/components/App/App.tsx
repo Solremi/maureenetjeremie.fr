@@ -7,6 +7,7 @@ import Guestbook from '../Guestbook/Guestbook';
 import Picture from '../Picture/Picture';
 import Place from '../Place/Place';
 import Quizz from '../Quizz/Quizz';
+import NotFound from '../404/404';
 
 import './App.scss';
 
@@ -22,6 +23,7 @@ function App() {
                     <Route path = "/pictures" element = {<Picture />} />
                     <Route path = "/ThePlaceToBe" element = {<Place />} />
                     <Route path = "/quizz" element = {<Quizz />} />
+                    <Route path = "*" element = {<NotFound />} />
                 </Routes>
             </div>
         </Router>
