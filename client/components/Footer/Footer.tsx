@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="has-text-centered " >
             <p>© 2024 Maureen & Jérémie</p>
             <p>
-            <strong>WebSite</strong> by <a href="https://louxelweb.fr">louxelWeb</a>. The source code is privacy.
+            <strong>WebSite</strong> by <a href="https://louxelweb.fr">LouxelWeb</a>. The source code is privacy.
             </p>
             </div>
         </footer>

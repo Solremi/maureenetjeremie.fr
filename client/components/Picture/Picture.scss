@@ -53,13 +53,18 @@
     max-width: 90vw;
     margin-top: 2vw ;
     background-color: v.$color-secondary ;
-
-  
-
 }
 
 @media (max-width: 768px) {
     #picture-name {
         display: none;
       }
+}
+
+#card-content{
+    background-color: black;
+}
+
+#picture-name {
+    height: 0.1%;
 }
