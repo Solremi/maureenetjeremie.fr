@@ -9,7 +9,13 @@
 }
 
 #box{
-    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     width: 60vw;
     background-color: v.$color-tertiary;
+    height: 10rem;
+
 }
