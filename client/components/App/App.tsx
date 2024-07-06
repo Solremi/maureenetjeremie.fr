@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, createContext, ReactNode, useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import axiosInstance from '../../axios/axios';
 import Home from '../Home/Home';
 import Signup from '../Signup/Signup';
 import Login from '../Login/Login';
@@ -12,25 +11,50 @@ import NotFound from '../404/404';
 import Pending from '../Pending/Pending';
 import './App.scss';
 
+// Create the Authentication Context
+interface AuthContextType {
+  isAuthenticated: boolean;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
+}
+
+export const AuthContext = createContext<AuthContextType>({
+  isAuthenticated: false,
+  setIsAuthenticated: () => {},
+});
+
+// Create the Protected Route Component
+const ProtectedRoute = ({ children }: { children: ReactNode }) => {
+  const { isAuthenticated } = useContext(AuthContext);
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <>{children}</>;
+};
 
 function App() {
-    return (
-        <Router>
-            <div className="App">
-                <Routes>
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/" element={<Signup />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/guestbook" element={<Guestbook/>} />
-                    <Route path="/pictures" element={<Picture />} />
-                    <Route path="/ThePlaceToBe" element={<Place/>} />
-                    <Route path="/quizz" element={<Quizz/>} />
-                    <Route path="*" element={<NotFound />} />
-                    <Route path="/pending" element={<Pending />} />
-                </Routes>
-            </div>
-        </Router>
-    );
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="/" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/guestbook" element={<ProtectedRoute><Guestbook /></ProtectedRoute>} />
+            <Route path="/pictures" element={<ProtectedRoute><Picture /></ProtectedRoute>} />
+            <Route path="/ThePlaceToBe" element={<ProtectedRoute><Place /></ProtectedRoute>} />
+            <Route path="/quizz" element={<ProtectedRoute><Quizz /></ProtectedRoute>} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/pending" element={<Pending />} />
+          </Routes>
+        </div>
+      </Router>
+    </AuthContext.Provider>
+  );
 }
 
 export default App;
