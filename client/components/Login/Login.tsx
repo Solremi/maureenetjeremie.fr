@@ -19,13 +19,20 @@ export default function Login() {
                 firstname,
                 password
             });
-
-            if (response.status === 200) {
+            if (response.status === 200 ) {
                 navigate('/home');
             }
+
         } catch (error) {
-            if (error.response && error.response.status === 401) {
-                setError('Erreur : prénom et/ou mot de passe incorrect.');
+            // Check if error is a response error
+            if (error.response) {
+                if (error.response.status === 403) {
+                    navigate('/pending');
+                } else if (error.response.status === 401) {
+                    setError('Erreur : prénom et/ou mot de passe incorrect.');
+                } else {
+                    setError('Une erreur est survenue. Veuillez réessayer.');
+                }
             } else {
                 setError('Une erreur est survenue. Veuillez réessayer.');
             }

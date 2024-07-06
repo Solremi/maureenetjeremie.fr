@@ -24,6 +24,10 @@ export const loginUser = async (req, res) => {
             return res.status(401).json({ error: "Prénom ou mot de passe incorrect" });
         }
 
+        if (user.status !== "ready") {
+            return res.status(403).json({ error: "Compte non activé" });
+        }
+
         req.session.user = user;
 
         return res.status(200).json({ message: "Connexion réussie" });
