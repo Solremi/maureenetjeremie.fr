@@ -5,26 +5,27 @@ import LoginDataMapper from '../datamappers/login.datamapper.js';
 const loginDataMapper = new LoginDataMapper(pool);
 
 export const loginUser = async (req, res) => {
-    const { firstname, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!firstname || !password) {
+    if (!email || !password) {
         return res.status(400).json({ error: "Tous les champs doivent être remplis" });
-    }
-
+    } 
+    
     try {
-        const user = await loginDataMapper.findUserByName(firstname);
+        const user = await loginDataMapper.findUserByName(email);
 
-        if (!user) {
-            return res.status(401).json({ error: "Prénom ou mot de passe incorrect" });
+        if (!user || user.length === 0) {
+            return res.status(401).json({ error: "Email ou mot de passe incorrect" });
         }
 
         const validPassword = await bcrypt.compare(password, user.password);
 
-        if (!validPassword) {
-            return res.status(401).json({ error: "Prénom ou mot de passe incorrect" });
+        if (!validPassword  || user.length === 0) {
+            return res.status(401).json({ error: "Email ou mot de passe incorrect" });
         }
 
-        if (user.status !== "ready") {
+
+        if (user.status !== "ready" ) {
             return res.status(403).json({ error: "Compte non activé" });
         }
 
@@ -45,4 +46,4 @@ export const logoutUser = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ error: "Erreur interne du serveur" });
     }
-}
+};

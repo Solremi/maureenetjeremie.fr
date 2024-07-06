@@ -5,14 +5,14 @@ export default class LoginDataMapper {
     this.pool = pool;
   }
 
-  async findUserByName(firstname) {
+  async findUserByName(email) {
     const query = `
     SELECT *
     FROM "user"
-    WHERE "firstname" = $1;
+    WHERE "email" = $1;
     `;
 
-    const values = [firstname];
+    const values = [email];
     try {
       const { rows } = await this.pool.query(query, values);
       return rows[0];

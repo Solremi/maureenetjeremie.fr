@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-    const [firstname, setFirstname] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -15,28 +15,32 @@ export default function Login() {
         setError('');
 
         try {
-            const response = await axiosInstance.post('/api/login', {
-                firstname,
-                password
-            });
-            if (response.status === 200 ) {
+            const response = await axiosInstance.post('/api/login', { email, password });
+
+            if (response.status === 200) {
                 navigate('/home');
             }
-
-        } catch (error) {
-            // Check if error is a response error
-            if (error.response) {
-                if (error.response.status === 403) {
-                    navigate('/pending');
-                } else if (error.response.status === 401) {
-                    setError('Erreur : prénom et/ou mot de passe incorrect.');
-                } else {
-                    setError('Une erreur est survenue. Veuillez réessayer.');
+        } catch (err) {
+            if (err.response) {
+                switch (err.response.status) {
+                    case 400:
+                        setError('Tous les champs doivent être remplis');
+                        break;
+                    case 401:
+                        setError('Erreur : email et/ou mot de passe incorrect.');
+                        break;
+                    case 403:
+                        navigate('/pending');
+                        break;
+                    case 500:
+                        setError('Erreur interne au serveur. Veuillez réessayer ou attendre les techniciens.');
+                        break;
+                    default:
+                        setError('Une erreur inconnue est survenue. Veuillez réessayer.');
                 }
             } else {
-                setError('Une erreur est survenue. Veuillez réessayer.');
+                setError('Erreur de connexion. Veuillez vérifier votre connexion internet.');
             }
-            console.log(error);
         }
     };
 
@@ -50,15 +54,15 @@ export default function Login() {
                             Si tu n'es pas encore inscrit, c'est par <a href="/"><strong id='ici'>ici</strong></a>    
                         </h2> 
                         <div className="field">
-                            <label className="label">Prénom</label>
+                            <label className="label">Email</label>
                             <div className="control">
                                 <input 
                                     className="input" 
                                     type="text" 
-                                    name="firstname" 
-                                    placeholder="Ton prénom" 
-                                    value={firstname}
-                                    onChange={(e) => setFirstname(e.target.value)}
+                                    name="email" 
+                                    placeholder="Ton email" 
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                         </div>
