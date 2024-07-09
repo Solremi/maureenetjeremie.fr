@@ -23,13 +23,13 @@ export default function Home() {
                 <div className="columns is-centered">
                     <div className="column is-three-quarters">
                         <h2 className="title is-3 has-text-centered">L' aventure commence !</h2>
-                        <ul>
-                            <li className="box">
+                        <ul >
+                            <li id="first-paragraphe" className="box">
                                 <p>
                                     Avant toute chose, nous souhaitons te remercier.
                                 </p>
                                 <p>
-                                    si tu es ici, c'est que tu as reçu une invitation pour notre mariage et que tu es assez curieux pour venir voir ce que l'on a préparé pour toi.  
+                                    Si tu es ici, c'est que tu as reçu une invitation pour notre mariage auquel tu as répondu favorablement.  
                                 </p>
                             </li>
 
@@ -38,14 +38,14 @@ export default function Home() {
                                     Salut à toi !
                                 </p>
                                 <p>
-                                     Ici est le seul endroit pas vraiment publique où tu pourras suivre notre parcours jusqu'à la fin, sans avoir à subir les dangers d'un buffet de mariage ou le risque de danser le Cha-Cha Slide en talons hauts (big up mamie). 
+                                     Ici est le seul endroit pas vraiment publique où tu pourras suivre notre parcours jusqu'à la fin et avoir davantage d'informations sur notre grand jour. 
                                 </p>
 
                                 <p>
-                                  Ici, vous pourrez avoir davantage d'informations sur notre grand jour, de la planification catastrophique à la découverte de combien de canapés un être humain peut réellement consommer. Pensez à ce site comme à votre invitation VIP pour rire et pleurer avec nous (de joie, évidemment) et surtout, pour voir combien de fois nous pouvons changer d'heure de début.
+                                    Pensez à ce site comme à votre invitation VIP pour rire et pleurer avec nous (de joie, évidemment) et surtout, pour voir combien de fois nous pouvons changer d'heure de début.
                                 </p>
                                 <p> 
-                                   Alors, mettez vos chaussons les plus confortables, prenez une coupe de champagne (pour les plus aisé (evidemment) sinon une bière fera largement l'affaire) et rejoignez-nous dans cette joyeuse aventure!
+                                   Alors, mettez vos chaussons les plus confortables, prenez une coupe de champagne [pour les plus aisés (evidemment) sinon une bière fera largement l'affaire] et rejoignez-nous dans cette joyeuse aventure!
                                 </p>
                             </li>
                         </ul>

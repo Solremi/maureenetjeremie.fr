@@ -64,7 +64,11 @@ export default function Goldenbook() {
             <div id="container-global" className="container">
                 <div id="div-title" className="box hero-body has-text-centered">
                     <h1 className="title is-2 has-text-white">Livre d'or</h1>
-                    <p className="subtitle has-text-centered has-text-white">Écris-nous un petit mot, ça fait toujours plaisir</p>
+                    <p className="subtitle has-text-centered has-text-white">Écris-nous un petit mot pour notre plus grand plaisir</p>
+                </div>
+                <div id="paragraph" className="box">
+                    <p>Ecrivez ce que vous voulez nous partager, avant, pendant ou après le mariage ^^</p>
+
                 </div>
                 <div className="container-field">
                     <form onSubmit={handleSubmit}>

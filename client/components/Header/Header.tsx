@@ -48,7 +48,7 @@ export default function Header() {
                             Photos
                         </Link>
                         <Link id="items" className="navbar-item" to="/thePlaceToBe">
-                            C'est où ?
+                            C'est où et quand ?
                         </Link>
                         <button id="items" className="navbar-item" onClick={handleLogout}>
                             Déconnexion

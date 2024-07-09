@@ -9,6 +9,10 @@
 
     h1{
         color: v.$color-primary;
+        @media screen and (max-width: 768px){
+            font-size: 1.5rem;
+            
+        }
     }
 }
 
@@ -22,4 +26,21 @@
     background-color: v.$color-tertiary;
     height: 10rem;
 
+}
+
+#photo-1{
+    margin-bottom: 2rem;
+}
+
+#box-lieu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#box-fin{
+    margin-top: 2rem;
+    background-color: v.$color-tertiary;
+    color: black;
 }
