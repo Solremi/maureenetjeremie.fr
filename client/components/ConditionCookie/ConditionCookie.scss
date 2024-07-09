@@ -2,14 +2,19 @@
 @use 'sass:color';
 
 
-.conditions-cookies {
+#container-global-cookie {
     padding: 20px;
     background-color: v.$color-secondary;
     color: black;
+    height: 100vh;
+    min-width: 60% ;
   
-    h1, h2 {
+    h1, h2{
       color: black;
-    }
+      font-size: large;
+      text-decoration: underline;
+      margin-bottom: 1rem;
+
   
     a {
       color: black;
@@ -22,12 +27,15 @@
   
     ul {
       list-style-type: disc;
-      padding-left: 20px;
+      padding-left: 1rem;
     }
   
     p {
       margin-bottom: 20px;
       line-height: 1.6;
+      margin-bottom: 1rem;
+
     }
   }
+}
   

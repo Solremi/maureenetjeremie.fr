@@ -50,9 +50,10 @@ function App() {
             <Route path="/pictures" element={<ProtectedRoute><Picture /></ProtectedRoute>} />
             <Route path="/ThePlaceToBe" element={<ProtectedRoute><Place /></ProtectedRoute>} />
             <Route path="/quizz" element={<ProtectedRoute><Quizz /></ProtectedRoute>} />
-            <Route path="/pending" element={<Pending />} />
             <Route path="/mentions-legales" element={<ProtectedRoute><LegalNotice/></ProtectedRoute>} />
             <Route path="/conditions-cookies" element={<ProtectedRoute><CookiePolicy /></ProtectedRoute>} />
+            <Route path="/pending" element={<Pending />} />
+          
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

@@ -5,4 +5,38 @@
 #container-global{
     background-color: v.$color-secondary;
     color: v.$color-text;
+    height: 100vh;
+    min-width: 60% ;
+    display: block;
+    flex-direction: column;
+
+
+    p{
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+
+    h1{
+        text-align: center;
+        padding-top: 2rem;
+        font-size: 100rem;
+    }
+    
+    h1,h2 {
+        color: v.$color-text;
+        font-size: large;
+        text-decoration: underline;
+        margin-bottom: 1rem;
+
+
+
+        a {
+            color: v.$color-text;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
 }

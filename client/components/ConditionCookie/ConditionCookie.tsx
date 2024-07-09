@@ -7,7 +7,9 @@ export default function ConditionsCookies() {
     return (
         <div className="conditions-cookies">
             <Header />
-            <h1>Politique de Cookies</h1>
+            <div id='container-global-cookie' className='container'>
+                 <h1>Politique de Cookies</h1>
+
             <p>Cette politique de cookies explique comment NOUS utilise des cookies et technologies similaires sur notre site web.</p>
             
             <h2>Qu'est-ce qu'un cookie?</h2>
@@ -29,7 +31,9 @@ export default function ConditionsCookies() {
             <p>Nous pouvons mettre à jour cette politique de cookies de temps en temps afin de refléter, par exemple, des changements à nos pratiques ou pour d'autres raisons opérationnelles, légales ou réglementaires.</p>
             
             <h2>Contactez-nous</h2>
-            <p>Pour plus d'informations sur notre utilisation des cookies ou si vous avez des questions, veuillez nous contacter à : <a href="mailto:contact@exemple.com">contact@exemple.com</a>.</p>
+            <p>Pour plus d'informations sur notre utilisation des cookies ou si vous avez des questions, veuillez nous contacter à : <a href="mailto:contact@exemple.com">contact@exemple.com</a>.</p> 
+            </div>
+          
             <Footer />
         </div>
     );
