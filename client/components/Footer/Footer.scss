@@ -1,1 +1,18 @@
 @use '../../styles/variables' as v;
+
+.footer-container{
+    background-color: v.$color-primary;
+    color: v.$color-secondary;
+    a{
+        color: v.$color-secondary;
+        font-weight:bold;
+        font-style: oblique;
+        text-decoration: underline;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    strong{
+        color: v.$color-secondary;
+    }
+}

@@ -9,6 +9,8 @@ import Place from '../Place/Place';
 import Quizz from '../Quizz/Quizz';
 import NotFound from '../404/404';
 import Pending from '../Pending/Pending';
+import MentionsLegales from '../MentionsLegales/MentionsLegales';
+import ConditionCookie from '../ConditionCookie/ConditionCookie.tsx';
 import './App.scss';
 
 // Create the Authentication Context
@@ -48,8 +50,10 @@ function App() {
             <Route path="/pictures" element={<ProtectedRoute><Picture /></ProtectedRoute>} />
             <Route path="/ThePlaceToBe" element={<ProtectedRoute><Place /></ProtectedRoute>} />
             <Route path="/quizz" element={<ProtectedRoute><Quizz /></ProtectedRoute>} />
-            <Route path="*" element={<NotFound />} />
             <Route path="/pending" element={<Pending />} />
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="/conditions-cookies" element={<ConditionCookie />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </Router>
