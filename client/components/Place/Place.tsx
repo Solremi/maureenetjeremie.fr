@@ -9,7 +9,7 @@ export default function Place() {
             <Header />
             <div id="contain-page" className="container">
                 <div id="box" className="box hero-body is-mobile ">
-                    <h1 title="Lieu de la cérémonie" className="title is-1 has-text-white has-text-centered" id="title-gallery">
+                    <h1 title="Lieu de la cérémonie" className="title is-1  has-text-centered" id="title-gallery">
                         Informations utiles
                     </h1>
                 </div>

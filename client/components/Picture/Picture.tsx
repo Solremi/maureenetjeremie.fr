@@ -79,7 +79,7 @@ function ImageUploader() {
                                 <div className="file is-light">
                                     <label className="file-label">
                                         <input className="file-input" type="file" name="image" accept="image/*" onChange={handleFileChange} />
-                                        <span className="file-cta">
+                                        <span id="chooseFile" className="file-cta">
                                             <span className="file-label">Choisi une photo ici…</span>
                                         </span>
                                     </label>

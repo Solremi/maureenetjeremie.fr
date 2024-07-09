@@ -1,0 +1,8 @@
+@use 'sass:color';
+@use './styles/variables' as v;
+
+
+html {
+    font-size: v.$font-size; 
+    font-family: v.$font-family;
+  }
