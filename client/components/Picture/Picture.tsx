@@ -9,6 +9,7 @@ function ImageUploader() {
     const [name, setName] = useState('');
     const [images, setImages] = useState<{ data: string, name: string }[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [modalImage, setModalImage] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -55,6 +56,14 @@ function ImageUploader() {
         }
     };
 
+    const handleImageClick = (imageSrc: string) => {
+        setModalImage(imageSrc);
+    };
+
+    const closeModal = () => {
+        setModalImage(null);
+    };
+
     return (
         <div className="picture">
             <Header />
@@ -65,7 +74,7 @@ function ImageUploader() {
                     </h1>
                     <br />
                     <p id="text" className="subtitle has-text-centered ">
-                        Partagez vos plus belles photos avec nous. <br /> <em>formats (.png .jpeg .jpg, .webp )</em>
+                        Partagez vos plus belles photos avec nous et regardez celles des autres. <br />Vous pouvez même faire un cherche et trouve si ça vous tente <br /> <em>formats (.png .jpeg .jpg, .webp )</em>
                     </p>
                     <p id="text" className="subtitle has-text-centered ">
                         Vous pouvez télécharger les photos qui s'affichent ci-dessous en faisant un clique droit à la souris, puis télécharger "enregistrer l'image sous ".
@@ -79,12 +88,22 @@ function ImageUploader() {
                                 <div className="file is-light">
                                     <label className="file-label">
                                         <input className="file-input" type="file" name="image" accept="image/*" onChange={handleFileChange} />
-                                        <span id="chooseFile" className="file-cta">
-                                            <span className="file-label">Choisi une photo ici…</span>
-                                        </span>
+                                        <div id="choose-box" className="box">
+                                            <span id="chooseFile" className="file-cta">
+                                                <span className="file-label">Choisi une photo ici…</span>
+                                            </span>
+                                            <span id="choosenFile">
+                                                {name && (
+                                                <div className="field has-text-centered">
+                                                    <p>{name}</p>
+                                                </div>
+                                                )}
+                                            </span>
+                                        </div>
                                     </label>
                                 </div>
                             </div>
+    
                             <div className="field has-text-centered">
                                 <button className="button is-success" type="submit">transférer</button>
                             </div>
@@ -101,7 +120,12 @@ function ImageUploader() {
                                 <div className="card">
                                     <div className="card-image">
                                         <figure className="image">
-                                            <img src={image.data} alt={image.name} style={{ width: "100vw", height: "auto" }} />
+                                            <img 
+                                                src={image.data} 
+                                                alt={image.name} 
+                                                style={{ width: "100vw", height: "auto" }} 
+                                                onClick={() => handleImageClick(image.data)}
+                                            />
                                         </figure>
                                     </div>
                                     <div id="card-content" className="card-content">
@@ -114,6 +138,18 @@ function ImageUploader() {
                         <p>Aucune image disponible.</p>
                     )}
                 </div>
+
+                {modalImage && (
+                    <div className="modal is-active">
+                        <div className="modal-background" onClick={closeModal}></div>
+                        <div className="modal-content">
+                            <p className="image">
+                                <img src={modalImage} alt="Modal content" />
+                            </p>
+                        </div>
+                        <button className="modal-close is-large" aria-label="close" onClick={closeModal}></button>
+                    </div>
+                )}
             </div>
             
             <Footer />
