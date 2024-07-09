@@ -51,7 +51,6 @@ export default function Goldenbook() {
                 setContent("");
                 setError("");
                 fetchMessages();
-                alert('Message envoyé avec succès');
             }
         } catch (err) {
             setError("Une erreur s'est produite. Veuillez réessayer.");

@@ -44,7 +44,6 @@ function ImageUploader() {
         }
         try {
             await axiosInstance.post('/api/picture', { data: image, name });
-            alert('Image uploaded successfully');
             setImage(null);
             setName('');
             // Refresh the image list
