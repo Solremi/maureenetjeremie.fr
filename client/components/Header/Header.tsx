@@ -42,13 +42,13 @@ export default function Header() {
                 <div id="navbar" className="navbar-menu">
                     <div className="navbar-end">
                         <Link id="items" className="navbar-item" to="/guestbook">
-                            Livre d'or
+                        📖 Livre d'or
                         </Link>
                         <Link id="items" className="navbar-item" to="/pictures">
-                            Photos
+                        📸 Photos
                         </Link>
                         <Link id="items" className="navbar-item" to="/thePlaceToBe">
-                            C'est où et quand ?
+                        🗺️ C'est où et quand ?
                         </Link>
                         <button id="items" className="navbar-item" onClick={handleLogout}>
                             Déconnexion

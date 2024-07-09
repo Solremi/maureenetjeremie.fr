@@ -1,0 +1,8 @@
+@use '../../styles/variables' as v;
+@use 'sass:color';
+
+
+#container-global{
+    background-color: v.$color-secondary;
+    color: v.$color-text;
+}

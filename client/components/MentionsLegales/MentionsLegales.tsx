@@ -1,13 +1,17 @@
 import React from 'react';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 import './MentionsLegales.scss';
 
 export default function MentionsLegales() {
     return (
         <div className="mentions-legales">
-            <h1>Mentions Légales</h1>
+            <Header />
+            <div id="container-global" className='container'>
+                <h1>Mentions Légales</h1>
             <h2>Éditeur du site</h2>
             <p>
-                Nom de l'entreprise : Maureen & Jérémie SARL<br />
+                Nom de l'entreprise : Jérémie SARL<br />
                 Adresse : 123 Rue Exemple, 75001 Paris, France<br />
                 Téléphone : +33 1 23 45 67 89<br />
                 Email : contact@exemple.com<br />
@@ -38,6 +42,11 @@ export default function MentionsLegales() {
             <p>
                 Ce site utilise des cookies pour améliorer l'expérience utilisateur. Pour plus d'informations, consultez notre <a href="/politique-de-cookies">politique de cookies</a>.
             </p>
+            </div>
+            
+            <Footer />
         </div>
     );
 }
+
+

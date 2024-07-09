@@ -1,6 +1,10 @@
+@use '../../styles/variables' as v;
+@use 'sass:color';
+
+
 .conditions-cookies {
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: v.$color-secondary;
     color: black;
   
     h1, h2 {

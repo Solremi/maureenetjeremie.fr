@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import './ConditionCookie.scss';
 
 export default function ConditionsCookies() {
     return (
         <div className="conditions-cookies">
+            <Header />
             <h1>Politique de Cookies</h1>
             <p>Cette politique de cookies explique comment NOUS utilise des cookies et technologies similaires sur notre site web.</p>
             
@@ -27,6 +30,7 @@ export default function ConditionsCookies() {
             
             <h2>Contactez-nous</h2>
             <p>Pour plus d'informations sur notre utilisation des cookies ou si vous avez des questions, veuillez nous contacter à : <a href="mailto:contact@exemple.com">contact@exemple.com</a>.</p>
+            <Footer />
         </div>
     );
 }
