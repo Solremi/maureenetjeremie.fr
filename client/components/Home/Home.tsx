@@ -7,7 +7,7 @@ export default function Home() {
   return (
         <div className="Home">
           <Header />
-        <section className="hero is-primary is-medium">
+        <section id="section-hero" className="hero ">
             <div className="hero-body ">
                 <div className="container has-text-centered">
                     <figure className="image is-150x150 is-inline-block">

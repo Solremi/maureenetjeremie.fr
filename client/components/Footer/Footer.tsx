@@ -8,7 +8,7 @@ export default function Footer() {
                 <div className="footer-section">
                     <p>© 2024 Maureen & Jérémie | Téléphone Maureen: 06.47.57.98.47 </p>
                     <p>
-                        <strong>WebSite</strong> by <a href="https://louxelweb.fr" target="_blank" rel="noopener noreferrer">LouxelWeb</a>. The source code is privacy.
+                        <strong>WebSite</strong> by <strong>louxelweb.fr </strong> The source code is privacy.
                     </p>
                 </div>
                 <div className="footer-section">
