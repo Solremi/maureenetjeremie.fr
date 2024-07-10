@@ -1,8 +1,9 @@
-@use '../../styles/variables' as v;
 @use 'sass:color';
+@use '../../styles/variables' as v;
 
+.conditions-cookies{
 
-#container-global-cookie {
+  #container-global-cookie {
     padding: 20px;
     background-color: v.$color-secondary;
     color: black;
@@ -36,6 +37,8 @@
       margin-bottom: 1rem;
 
     }
+
   }
 }
   
+}

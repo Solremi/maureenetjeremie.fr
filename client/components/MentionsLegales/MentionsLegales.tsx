@@ -7,24 +7,24 @@ export default function MentionsLegales() {
     return (
         <div className="mentions-legales">
             <Header />
-            <div id="container-global" className='container'>
+            <div id="container-global-mentions" className='container'>
                 <h1>Mentions Légales</h1>
             <h2>Éditeur du site</h2>
             <p>
                 Nom de l'entreprise : Jérémie SARL<br />
-                Adresse : 123 Rue Exemple, 75001 Paris, France<br />
-                Téléphone : +33 1 23 45 67 89<br />
+                Adresse : 2 rue de l'étoile polaire, France<br />
+                Téléphone : +33 4 24 57 98 96 74 81 36<br />
                 Email : contact@exemple.com<br />
                 Numéro d'inscription au RCS : 123 456 789 RCS Paris<br />
-                Numéro de TVA intracommunautaire : FR12345678901<br />
-                Directeur de la publication : Maureen Dupont
+                Numéro de TVA intracommunautaire : FR1234567890145457878<br />
+                Directeur de la publication : jérémie Rocquet
             </p>
             
             <h2>Hébergeur du site</h2>
             <p>
-                Nom de l'hébergeur : OVH<br />
-                Adresse : 2 Rue Kellermann, 59100 Roubaix, France<br />
-                Téléphone : +33 9 72 10 10 07
+                Nom de l'hébergeur : O2switch<br />
+                Adresse : CHE DES PARDIAUX 63000 CLERMONT FERRAND. France<br />
+                Téléphone : +33 9 72 10 10 07 84 sais plus
             </p>
             
             <h2>Conditions d'utilisation</h2>

@@ -18,10 +18,10 @@ export default function ConditionsCookies() {
             <h2>Types de cookies utilisés</h2>
             <p>Nous utilisons les types de cookies suivants :</p>
             <ul>
-                <li><strong>Cookies strictement nécessaires:</strong> Ces cookies sont essentiels pour vous permettre de naviguer sur le site et d'utiliser ses fonctionnalités, telles que l'accès aux zones sécurisées du site.</li>
-                <li><strong>Cookies de performance:</strong> Ces cookies collectent des informations sur la façon dont les visiteurs utilisent un site web, par exemple les pages que les visiteurs consultent le plus souvent, et s'ils reçoivent des messages d'erreur des pages web.</li>
-                <li><strong>Cookies de fonctionnalité:</strong> Ces cookies permettent au site de se souvenir des choix que vous faites (comme votre nom d'utilisateur, la langue ou la région dans laquelle vous vous trouvez) et fournissent des fonctionnalités améliorées et plus personnelles.</li>
-                <li><strong>Cookies de ciblage/publicité:</strong> Ces cookies sont utilisés pour diffuser des publicités plus pertinentes pour vous et vos intérêts. Ils sont également utilisés pour limiter le nombre de fois que vous voyez une publicité ainsi que pour aider à mesurer l'efficacité des campagnes publicitaires.</li>
+                <li><strong  className='has-text-black'>Cookies strictement nécessaires:</strong> Ces cookies sont essentiels pour vous permettre de naviguer sur le site et d'utiliser ses fonctionnalités, telles que l'accès aux zones sécurisées du site.</li>
+                <li><strong  className='has-text-black'>Cookies de performance:</strong> Ces cookies collectent des informations sur la façon dont les visiteurs utilisent un site web, par exemple les pages que les visiteurs consultent le plus souvent, et s'ils reçoivent des messages d'erreur des pages web.</li>
+                <li><strong  className='has-text-black'>Cookies de fonctionnalité:</strong> Ces cookies permettent au site de se souvenir des choix que vous faites (comme votre nom d'utilisateur, la langue ou la région dans laquelle vous vous trouvez) et fournissent des fonctionnalités améliorées et plus personnelles.</li>
+                <li><strong  className='has-text-black'>Cookies de ciblage/publicité:</strong> Ces cookies sont utilisés pour diffuser des publicités plus pertinentes pour vous et vos intérêts. Ils sont également utilisés pour limiter le nombre de fois que vous voyez une publicité ainsi que pour aider à mesurer l'efficacité des campagnes publicitaires.</li>
             </ul>
             
             <h2>Comment gérer les cookies?</h2>

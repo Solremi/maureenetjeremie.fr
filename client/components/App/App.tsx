@@ -29,7 +29,7 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { isAuthenticated } = useContext(AuthContext);
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/404" replace />;
   }
 
   return <>{children}</>;

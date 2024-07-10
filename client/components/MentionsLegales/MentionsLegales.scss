@@ -1,8 +1,9 @@
 @use '../../styles/variables' as v;
 @use 'sass:color';
 
+.mentions-legales{
 
-#container-global{
+    #container-global-mentions{
     background-color: v.$color-secondary;
     color: v.$color-text;
     height: 100vh;
@@ -14,6 +15,7 @@
     p{
         text-align: left;
         margin-bottom: 1rem;
+        margin-left: 1rem;
     }
 
     h1{
@@ -27,6 +29,8 @@
         font-size: large;
         text-decoration: underline;
         margin-bottom: 1rem;
+        margin-left: 1rem;
+       font-weight: bold;
 
 
 
@@ -39,4 +43,5 @@
             }
         }
     }
+}
 }
