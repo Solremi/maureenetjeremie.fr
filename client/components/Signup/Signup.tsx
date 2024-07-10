@@ -32,8 +32,8 @@ export default function Signup() {
             if (formData.password.length < 3) {
                 throw new Error('Le mot de passe doit contenir au moins 3 caractères');
             }
-            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/.test(formData.password)) {
-                throw new Error('Le mot de passe doit contenir au moins 1 majuscule, 1 minuscule et 1 chiffre');
+            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{9,}$/.test(formData.password)) {
+                throw new Error('Le mot de passe doit contenir au moins 1 majuscule + 1 minuscule + 1 chiffre et doit être d\'une longueur minimale de 9 caractères.');
             }
 
             setErrorMessage('');
@@ -126,7 +126,7 @@ export default function Signup() {
                                         onChange={handleInputChange}
                                         required
                                     />
-                                    <em id='em'> minimum: 1 majuscule + 1 minuscule + 1 chiffre</em>
+                                    <em id='em'> minimum: 1 majuscule + 1 minuscule + 1 chiffre (d'une longeur de 9 carractères)</em>
                                 </div>
                             </div>
 

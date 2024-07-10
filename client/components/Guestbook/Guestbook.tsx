@@ -66,7 +66,7 @@ export default function Goldenbook() {
                     <p className="subtitle has-text-centered has-text-white">Écris-nous un petit mot pour notre plus grand plaisir</p>
                 </div>
                 <div id="paragraph" className="box">
-                    <p> ✍️ Ecrivez  ce que vous voulez nous partager, avant, pendant ou après le mariage ^^ </p>
+                    <p> ✍️ Ecrivez  ce que vous voulez nous partager, avant, pendant ou après le mariage <span className="span-letter">💌</span></p>
 
                 </div>
                 <div className="container-field">

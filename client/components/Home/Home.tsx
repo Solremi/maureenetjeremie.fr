@@ -35,14 +35,14 @@ export default function Home() {
 
                             <li className="box">
                                 <p>
-                                    Salut à toi !
+                                    Salut à toi ! 👋
                                 </p>
                                 <p>
                                      Ici est le seul endroit pas vraiment publique où tu pourras suivre notre parcours jusqu'à la fin et avoir davantage d'informations sur notre grand jour. 
                                 </p>
 
                                 <p>
-                                    Pensez à ce site comme à votre invitation VIP pour rire et pleurer avec nous (de joie, évidemment) et surtout, pour voir combien de fois nous pouvons changer d'heure de début.
+                                    Pense à ce site comme à ton invitation VIP pour rire et pleurer avec nous (de joie, évidemment) et surtout, pour voir combien de fois nous pouvons changer d'heure de début.
                                 </p>
                                 <p> 
                                    Alors, mettez vos chaussons les plus confortables, prenez une coupe de champagne [pour les plus aisés (evidemment) sinon une bière fera largement l'affaire] et rejoignez-nous dans cette joyeuse aventure!
