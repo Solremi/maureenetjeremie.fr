@@ -37,7 +37,7 @@ export default function Goldenbook() {
         fetchUser();
     }, []);
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
         if (!userName) {

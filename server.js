@@ -7,13 +7,12 @@ import session from 'express-session';
 import cors from 'cors';
 import corsOptions from './config/cors.config.js';
 import bodyParser from 'body-parser';
-/*
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-*/
 
 const app = express();
 const httpServer = createServer(app);
@@ -26,7 +25,7 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static('./public'));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Activation CORS
 app.use(cors(corsOptions));
@@ -44,8 +43,8 @@ app.use(
 app.use(router);
 
 /* a mettre en production avec index.html dans le dossier public
-app.use('*', (req, res) => {
-  res.sendFile('index.html', { root: path.join(__dirname, './public') });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 */
 

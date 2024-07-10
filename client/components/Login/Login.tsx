@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import './Login.scss';
 import axiosInstance from '../../axios/axios';
-import Footer from '../Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../App/App'; // Assurez-vous d'importer le contexte correctement
 
@@ -15,15 +14,15 @@ export default function Login() {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         setError('');
-
+    
         try {
             const response = await axiosInstance.post('/api/login', { email, password });
-
+    
             if (response.status === 200) {
                 setIsAuthenticated(true);
                 navigate('/home');
             }
-        } catch (err) {
+        } catch (err: any) {
             if (err.response) {
                 switch (err.response.status) {
                     case 400:

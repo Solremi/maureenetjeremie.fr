@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axiosInstance from '../../axios/axios';
-import Footer from '../Footer/Footer';
 import './Signup.scss';
 
 export default function Signup() {
@@ -14,8 +13,7 @@ export default function Signup() {
     const [errorMessage, setErrorMessage] = useState('');
     const [message, setMessage] = useState('');
 
-
-    const handleInputChange = (event) => {
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData({
             ...formData,
@@ -23,7 +21,7 @@ export default function Signup() {
         });
     };
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
             if (formData.password !== formData.confirmPassword) {
@@ -43,7 +41,7 @@ export default function Signup() {
             setMessage('SUPER ! Inscription effectuée avec succès. Maintenant tu dois attendre que je valide ton inscription. Merci de ta patience.');
 
 
-        } catch (error) {
+        } catch (error: any) {
             if (error.response) {
                 if (error.response.status === 409) {
                     setErrorMessage('ah ben non, cet utilisateur est déjà inscrit');
