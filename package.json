@@ -9,7 +9,7 @@
     "dev:back": "nodemon server.js",
     "dev:front": "vite",
     "dev": "concurrently \"npm run dev:back\" \"npm run dev:front\"",
-    "build": " tsc && vite build",
+    "build": "NODE_ENV=production tsc && vite build",
     "start": "node server.js"
   },
   "repository": {
