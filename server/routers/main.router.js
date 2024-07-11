@@ -11,7 +11,7 @@ const router = express.Router();
 router.post("/api/signup", cw(signup.createUser));
 
 router.post("/api/login",  cw(login.loginUser));
-router.post("/api/logout", cw(login.logoutUser));
+router.post("/logout", cw(login.logoutUser));
 
 router.get("/api/guestbook",  cw(guestbook.showGuestbookMessages));
 router.post("/api/guestbook",  cw(guestbook.createMessage));

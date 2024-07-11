@@ -20,7 +20,6 @@ export default function Header() {
             await axiosInstance.post('/api/logout');
             navigate('/login', { replace: true });
         } catch (error) {
-            console.error('Erreur lors de la déconnexion', error);
         }
     };
 

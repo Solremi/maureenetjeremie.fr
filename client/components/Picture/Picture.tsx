@@ -18,7 +18,6 @@ function ImageUploader() {
                 setImages(response.data);
             } catch (error) {
                 setError('Error fetching images');
-                console.error('Error fetching images:', error);
             }
         };
         fetchImages();
@@ -51,7 +50,6 @@ function ImageUploader() {
             setImages(response.data);
         } catch (error) {
             setError('Error uploading image');
-            console.error('Error uploading image:', error);
         }
     };
 

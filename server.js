@@ -34,6 +34,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    httpOnly: true,
     cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 },
   })
 );
@@ -45,7 +46,6 @@ app.use('*', (req, res) => {
 });
 
 httpServer.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
 });
 
 export default app;

@@ -12,7 +12,6 @@ export default class GuestbookDataMapper {
         const result = await this.pool.query(query, values);
         return result.rows[0];
       } catch (error) {
-        console.error('Error executing query:', error.message);
         throw error;
       }
     }
@@ -28,7 +27,6 @@ export default class GuestbookDataMapper {
         const result = await this.pool.query(query);
         return result.rows;
       } catch (error) {
-        console.error('Error executing query:', error.message);
         throw error;
       }
     }
