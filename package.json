@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Solremi/maureenetjeremie.fr#readme",
   "dependencies": {
+    "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^2.2.6",
     "@types/uuid": "^10.0.0",
     "axios": "^1.7.2",

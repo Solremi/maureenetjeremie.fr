@@ -3,6 +3,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import axiosInstance from "../../axios/axios";
 import { Fireworks } from 'fireworks-js';
+import { useSpring, animated } from '@react-spring/web';
 import "./Guestbook.scss";
 
 export default function Goldenbook() {
@@ -10,18 +11,13 @@ export default function Goldenbook() {
     const [messages, setMessages] = useState<{ content: string; firstname: string }[]>([]);
     const [error, setError] = useState<string>("");
     const [userName, setUserName] = useState<string>(() => {
-        // Récupérer les informations utilisateur de localStorage au chargement du composant
         return localStorage.getItem('userName') || '';
     });
     const fireworksContainer = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        fetchMessages();
-    }, []);
-
     const fetchMessages = async () => {
         try {
-            const response = await axiosInstance.get('/api/guestbook');
+            const response = await axiosInstance.get('/api/guestbook', { withCredentials: true });
             if (response.status === 200) {
                 setMessages(response.data);
             }
@@ -29,6 +25,28 @@ export default function Goldenbook() {
             setError("Impossible de récupérer les messages.");
         }
     };
+
+    const fetchUser = async () => {
+        const user = localStorage.getItem('user');
+        if (user) {
+            setUserName(JSON.parse(user).firstname);
+        } else {
+            try {
+                const response = await axiosInstance.get('/api/session', { withCredentials: true });
+                if (response.status === 200) {
+                    localStorage.setItem('user', JSON.stringify(response.data));
+                    setUserName(response.data.firstname);
+                }
+            } catch (err) {
+                setError("Impossible de récupérer les informations de l'utilisateur.");
+            }
+        }
+    };
+
+    useEffect(() => {
+        fetchMessages();
+        fetchUser();
+    }, []);
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -39,12 +57,13 @@ export default function Goldenbook() {
         }
 
         try {
-            const response = await axiosInstance.post('/api/guestbook', { content });
+            const response = await axiosInstance.post('/api/guestbook', { content }, { withCredentials: true });
             if (response.status === 201) {
                 setContent("");
                 setError("");
                 fetchMessages();
                 triggerFireworks();
+                triggerHeartAnimation();
             }
         } catch (err) {
             setError("Une erreur s'est produite. Veuillez réessayer.");
@@ -79,6 +98,19 @@ export default function Goldenbook() {
         }
     };
 
+    const heartAnimationProps = useSpring({
+        from: { transform: 'scale(1)' },
+        to: { transform: 'scale(2.5)' },
+        config: { duration: 300 },
+        reset: true
+    });
+
+    const triggerHeartAnimation = () => {
+        setHeartAnimation(heartAnimationProps);
+    };
+
+    const [heartAnimation, setHeartAnimation] = useState(heartAnimationProps);
+
     return (
         <div className="goldenbook">
             <Header />
@@ -88,7 +120,7 @@ export default function Goldenbook() {
                     <p className="subtitle has-text-centered has-text-white">Écris-nous un petit mot pour notre plus grand plaisir</p>
                 </div>
                 <div id="paragraph" className="box">
-                    <p> ✍️ Ecrivez ce que vous voulez nous partager, avant, pendant ou après le mariage <span className="span-letter">💌</span></p>
+                    <p> ✍️ Ecrivez ce que vous voulez nous partager, avant, pendant ou après le mariage </p>
                 </div>
                 <div className="container-field">
                     <form onSubmit={handleSubmit}>
@@ -112,6 +144,9 @@ export default function Goldenbook() {
                         </div>
                     </form>
                 </div>
+                <animated.div style={heartAnimation} className="heart-icon">
+                    💌
+                </animated.div>
                 <div>
                     <p id="message" className="title is-4">Messages</p>
                     <div id="container-card" className="box container ">
