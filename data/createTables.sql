@@ -3,7 +3,7 @@ BEGIN;
 DROP TABLE IF EXISTS "message", "question", "user", "picture" CASCADE;
 
 CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY UNIQUE,
+    "id" SERIAL PRIMARY KEY,
     "lastname"   TEXT NOT NULL,
     "firstname"  TEXT NOT NULL,
     "email"      TEXT NOT NULL UNIQUE,

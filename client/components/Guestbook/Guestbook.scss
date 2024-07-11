@@ -52,12 +52,13 @@
     background-color: v.$color-secondary;
     
     #one-card {
-     background-color: rgba(204, 176, 20, 0.808);
+     background-color: rgba(228, 210, 112, 0.808);
     }
   }
   
   #message{
     margin-left: 5%;
+    color: v.$color-text;
   }
   
   .message-content{
@@ -65,6 +66,7 @@
   }
   .message-author{
     color: v.$color-primary;
+    font-weight: bold;
   }
   
   .container-field{
