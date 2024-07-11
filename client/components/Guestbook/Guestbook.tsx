@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import axiosInstance from "../../axios/axios";
+import { Fireworks } from 'fireworks-js';
 import "./Guestbook.scss";
 
 export default function Goldenbook() {
-    const [content, setContent] = useState("");
+    const [content, setContent] = useState<string>("");
     const [messages, setMessages] = useState<{ content: string; firstname: string }[]>([]);
-    const [error, setError] = useState("");
-    const [userName, setUserName] = useState("");
+    const [error, setError] = useState<string>("");
+    const [userName, setUserName] = useState<string>("");
+    const fireworksContainer = useRef<HTMLDivElement>(null);
 
     const fetchMessages = async () => {
         try {
@@ -51,11 +53,38 @@ export default function Goldenbook() {
                 setContent("");
                 setError("");
                 fetchMessages();
-                window.location.reload();
-                alert("Votre message a bien été envoyé !");
+                triggerFireworks();
             }
         } catch (err) {
             setError("Une erreur s'est produite. Veuillez réessayer.");
+        }
+    };
+
+    const triggerFireworks = () => {
+        if (fireworksContainer.current) {
+            const fireworks = new Fireworks(fireworksContainer.current, { 
+                autoresize: true,
+                opacity: 0.5,
+                acceleration: 1.02,
+                friction: 0.97,
+                gravity: 0.8,
+                particles: 750,
+                explosion: 7,
+                boundaries: {
+                    x: 50,
+                    y: 50,
+                    width: fireworksContainer.current.clientWidth,
+                    height: fireworksContainer.current.clientHeight
+                },
+            });
+            fireworks.start();
+            setTimeout(() => {
+                fireworksContainer.current?.classList.add('fade-out');
+            }, 4500); // Commencez à estomper après 4.5 secondes
+            setTimeout(() => {
+                fireworks.stop();
+                fireworksContainer.current?.classList.remove('fade-out');
+            }, 6000); // Arrêtez les feux d'artifice après 6 secondes
         }
     };
 
@@ -68,8 +97,7 @@ export default function Goldenbook() {
                     <p className="subtitle has-text-centered has-text-white">Écris-nous un petit mot pour notre plus grand plaisir</p>
                 </div>
                 <div id="paragraph" className="box">
-                    <p> ✍️ Ecrivez  ce que vous voulez nous partager, avant, pendant ou après le mariage <span className="span-letter">💌</span></p>
-
+                    <p> ✍️ Ecrivez ce que vous voulez nous partager, avant, pendant ou après le mariage <span className="span-letter">💌</span></p>
                 </div>
                 <div className="container-field">
                     <form onSubmit={handleSubmit}>
@@ -94,7 +122,7 @@ export default function Goldenbook() {
                     </form>
                 </div>
                 <div>
-                    <p id= "message" className="title is-4">Messages</p>
+                    <p id="message" className="title is-4">Messages</p>
                     <div id="container-card" className="box container ">
                         {messages.map((message, index) => (
                             <div key={index} className="column is-full-mobile is-one-third-tablet is-one-quarter-desktop">
@@ -110,6 +138,7 @@ export default function Goldenbook() {
                 </div>
             </div>
             <Footer />
+            <div ref={fireworksContainer} className="fireworks-container" />
         </div>
     );
 }

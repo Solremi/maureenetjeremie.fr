@@ -41,6 +41,9 @@ importers:
       express-session:
         specifier: ^1.18.0
         version: 1.18.0
+      fireworks-js:
+        specifier: ^2.10.7
+        version: 2.10.7
       jwt-decode:
         specifier: ^4.0.0
         version: 4.0.0
@@ -776,6 +779,9 @@ packages:
   finalhandler@1.2.0:
     resolution: {integrity: sha512-5uXcUVftlQMFnWC9qu/svkWv3GTd2PfUhK/3PLkYNAe7FbqJMt3515HaxE6eRL74GdsriiwujiawdaB1BpEISg==}
     engines: {node: '>= 0.8'}
+
+  fireworks-js@2.10.7:
+    resolution: {integrity: sha512-FyRNiqlgu9ZeFCjfN0UiGUlj5dUWNYLyFaWN/Q8sOMf0E+KGA4dMROaBZpCtym85fChgCspoa3jHoLTRZiy74A==}
 
   follow-redirects@1.15.6:
     resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
@@ -2078,6 +2084,8 @@ snapshots:
       unpipe: 1.0.0
     transitivePeerDependencies:
       - supports-color
+
+  fireworks-js@2.10.7: {}
 
   follow-redirects@1.15.6: {}
 
