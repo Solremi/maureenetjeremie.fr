@@ -1,4 +1,4 @@
-import React, { useState, createContext, ReactNode, useContext } from 'react';
+import React, { useState, createContext, ReactNode, useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from '../Home/Home';
 import Signup from '../Signup/Signup';
@@ -36,7 +36,16 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
 };
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    // Récupérer l'état d'authentification depuis localStorage
+    const savedAuthState = localStorage.getItem('isAuthenticated');
+    return savedAuthState ? JSON.parse(savedAuthState) : false;
+  });
+
+  useEffect(() => {
+    // Stocker l'état d'authentification dans localStorage à chaque changement
+    localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+  }, [isAuthenticated]);
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
@@ -50,10 +59,9 @@ function App() {
             <Route path="/pictures" element={<ProtectedRoute><Picture /></ProtectedRoute>} />
             <Route path="/ThePlaceToBe" element={<ProtectedRoute><Place /></ProtectedRoute>} />
             <Route path="/quizz" element={<ProtectedRoute><Quizz /></ProtectedRoute>} />
-            <Route path="/mentions-legales" element={<ProtectedRoute><LegalNotice/></ProtectedRoute>} />
-            <Route path="/conditions-cookies" element={<ProtectedRoute><CookiePolicy /></ProtectedRoute>} />
+            <Route path="/mentions-legales" element={<LegalNotice />} />
+            <Route path="/conditions-cookies" element={<CookiePolicy />} />
             <Route path="/pending" element={<Pending />} />
-          
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

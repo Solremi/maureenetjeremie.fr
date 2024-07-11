@@ -75,6 +75,13 @@
     height: 0.1%;
 }
 
+#form-gallery{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #choose-box{
     background-color: v.$color-tertiary;
 
