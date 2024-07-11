@@ -1,4 +1,3 @@
-
 import 'dotenv/config';
 import express from 'express';
 import { createServer } from 'node:http';
@@ -25,8 +24,8 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, 'dist')));
-
+// Servir les fichiers statiques depuis le dossier 'public'
+app.use(express.static('./public'));
 // Activation CORS
 app.use(cors(corsOptions));
 
@@ -39,16 +38,14 @@ app.use(
   })
 );
 
-
 app.use(router);
 
-/* a mettre en production avec index.html dans le dossier public
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+app.use('*', (req, res) => {
+  res.sendFile('index.html', { root: path.join(__dirname, './public') });
 });
-*/
 
 httpServer.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
 export default app;

@@ -27,8 +27,8 @@ export default function Signup() {
             if (formData.password !== formData.confirmPassword) {
                 throw new Error('Les mots de passe ne correspondent pas');
             }
-            if (formData.password.length < 3) {
-                throw new Error('Le mot de passe doit contenir au moins 3 caractères');
+            if (formData.password.length < 9) {
+                throw new Error('Le mot de passe doit contenir au moins 9 caractères');
             }
             if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{9,}$/.test(formData.password)) {
                 throw new Error('Le mot de passe doit contenir au moins 1 majuscule + 1 minuscule + 1 chiffre et doit être d\'une longueur minimale de 9 caractères.');
