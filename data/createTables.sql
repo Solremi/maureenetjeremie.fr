@@ -29,9 +29,10 @@ CREATE TABLE "question" (
 CREATE TABLE "message" (
     "id" SERIAL PRIMARY KEY UNIQUE,
     "content"    TEXT NOT NULL,
+    "firstname"  TEXT NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ,
-    "user_id"    INT NOT NULL,
+    "user_id"    INT,
     FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE
 );
 

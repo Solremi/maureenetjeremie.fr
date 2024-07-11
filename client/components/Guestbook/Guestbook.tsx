@@ -15,9 +15,13 @@ export default function Goldenbook() {
     });
     const fireworksContainer = useRef<HTMLDivElement>(null);
 
+    useEffect(() => {
+        fetchMessages();
+    }, []);
+
     const fetchMessages = async () => {
         try {
-            const response = await axiosInstance.get('/api/guestbook', { withCredentials: true });
+            const response = await axiosInstance.get('/api/guestbook');
             if (response.status === 200) {
                 setMessages(response.data);
             }
@@ -26,38 +30,15 @@ export default function Goldenbook() {
         }
     };
 
-    const fetchUser = async () => {
-        const user = localStorage.getItem('user');
-        if (user) {
-            setUserName(JSON.parse(user).firstname);
-        } else {
-            try {
-                const response = await axiosInstance.get('/api/session', { withCredentials: true });
-                if (response.status === 200) {
-                    localStorage.setItem('user', JSON.stringify(response.data));
-                    setUserName(response.data.firstname);
-                }
-            } catch (err) {
-                setError("Impossible de récupérer les informations de l'utilisateur.");
-            }
-        }
-    };
-
-    useEffect(() => {
-        fetchMessages();
-        fetchUser();
-    }, []);
-
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-
         if (!userName) {
-            setError("Vous devez être connecté pour créer un message.");
+            setError("Veuillez entrer votre prénom.");
             return;
         }
 
         try {
-            const response = await axiosInstance.post('/api/guestbook', { content }, { withCredentials: true });
+            const response = await axiosInstance.post('/api/guestbook', { content, firstname: userName });
             if (response.status === 201) {
                 setContent("");
                 setError("");
@@ -111,6 +92,12 @@ export default function Goldenbook() {
 
     const [heartAnimation, setHeartAnimation] = useState(heartAnimationProps);
 
+    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const name = event.target.value;
+        setUserName(name);
+        localStorage.setItem('userName', name);
+    };
+
     return (
         <div className="goldenbook">
             <Header />
@@ -124,6 +111,18 @@ export default function Goldenbook() {
                 </div>
                 <div className="container-field">
                     <form onSubmit={handleSubmit}>
+                        <div className="field">
+                            <div className="control">
+                                <input
+                                    className="input is-warning"
+                                    type="text"
+                                    placeholder="Votre prénom"
+                                    value={userName}
+                                    onChange={handleNameChange}
+                                    required
+                                />
+                            </div>
+                        </div>
                         <div className="field">
                             <div className="control">
                                 <textarea
@@ -155,7 +154,7 @@ export default function Goldenbook() {
                                 <div className="card">
                                     <div id="one-card" className="card-content">
                                         <p className="message-content">{message.content}</p>
-                                        <p className="message-author has-text-right">{message.firstname}</p>
+                                        <p className="message-author">- {message.firstname}</p>
                                     </div>
                                 </div>
                             </div>

@@ -5,15 +5,13 @@ const guestbookDataMapper = new GuestbookDataMapper(pool);
 
 export const createMessage = async (req, res) => {
   try {
-    const { content } = req.body;
+    const { content, firstname } = req.body;
 
-    if (!req.session.user) {
-      return res.status(401).json({ error: 'Unauthorized' });
+    if (!content || !firstname) {
+      return res.status(400).json({ error: 'Content and firstname are required' });
     }
 
-    const userId = req.session.user.id;
-
-    const newMessage = await guestbookDataMapper.addEntry({ content, userId });
+    const newMessage = await guestbookDataMapper.addEntry({ content, firstname });
     res.status(201).json(newMessage);
   } catch (error) {
     res.status(500).json({ error: error.message });
