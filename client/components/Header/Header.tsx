@@ -17,7 +17,7 @@ export default function Header() {
 
     const handleLogout = async () => {
         try {
-            await axiosInstance.post('/api/logout');
+            await axiosInstance.post('/logout');
             navigate('/login', { replace: true });
         } catch (error) {
         }

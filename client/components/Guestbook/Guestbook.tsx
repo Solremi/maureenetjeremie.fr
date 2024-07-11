@@ -9,8 +9,15 @@ export default function Goldenbook() {
     const [content, setContent] = useState<string>("");
     const [messages, setMessages] = useState<{ content: string; firstname: string }[]>([]);
     const [error, setError] = useState<string>("");
-    const [userName, setUserName] = useState<string>("");
+    const [userName, setUserName] = useState<string>(() => {
+        // Récupérer les informations utilisateur de localStorage au chargement du composant
+        return localStorage.getItem('userName') || '';
+    });
     const fireworksContainer = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        fetchMessages();
+    }, []);
 
     const fetchMessages = async () => {
         try {
@@ -22,22 +29,6 @@ export default function Goldenbook() {
             setError("Impossible de récupérer les messages.");
         }
     };
-
-    const fetchUser = async () => {
-        try {
-            const response = await axiosInstance.get('/api/session');
-            if (response.status === 200) {
-                setUserName(response.data.firstname);
-            }
-        } catch (err) {
-            setError("Impossible de récupérer les informations de l'utilisateur.");
-        }
-    };
-
-    useEffect(() => {
-        fetchMessages();
-        fetchUser();
-    }, []);
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
