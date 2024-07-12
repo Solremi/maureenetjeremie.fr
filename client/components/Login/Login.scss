@@ -4,9 +4,10 @@
 
 #container-login{
     margin-top: 3rem;
-    width: 50%;
+    max-width: 80vw;
+
     h2 #ici {
-        
+        color: v.$color-tertiary;
         text-decoration: underline;
         &:hover {
             color: v.$color-primary;

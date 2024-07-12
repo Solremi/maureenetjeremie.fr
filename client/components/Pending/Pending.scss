@@ -1,7 +1,6 @@
 @use 'sass:color';
 @use '../../styles/variables' as v;
 
-
 #container-page{
     height: auto;
     width: auto;
@@ -9,48 +8,52 @@
     justify-content: center;
     align-items: center;
     background-color: v.$color-secondary;
+
+    #title-h1{
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: v.$color-text;
+     }
+     
+     #pending-text{
+         max-width: 90vw;
+         min-width: 50vw;
+         font-size: large;
+         margin-bottom: 3rem;
+     
+     }
+     #pending-status{
+         margin-bottom: 3rem;
+         color: v.$color-primary;
+     
+     }
+     
+     .hero-body {
+         .container {
+             text-align: center;
+         }
+     
+         #iconPending {
+             display: inline-block;
+             vertical-align: middle;
+             width: 5rem;
+             height: auto;
+         }
+     }
+     
+     #pending-status{
+        max-width: 90vw;
+        background-color: v.$color-tertiary;
+     }
+     
+     #iconPending-xoxo{
+         display: inline-block;
+         vertical-align: middle;
+         padding-left: 1rem;
+         width: 5rem;
+         height: auto;
+     }
+     
+
 }
 
-#title-h1{
-   margin-top: 2rem;
-   margin-bottom: 1rem;
-   color: v.$color-text;
-}
-
-#pending-text{
-    max-width: 60vw;
-    font-size: large;
-    margin-bottom: 3rem;
-
-}
-#pending-status{
-    margin-bottom: 3rem;
-    color: v.$color-primary;
-
-}
-
-.hero-body {
-    .container {
-        text-align: center;
-    }
-
-    #iconPending {
-        display: inline-block;
-        margin-left: 1rem;
-        vertical-align: middle;
-        width: 5rem;
-        height: auto;
-    }
-}
-
-#pending-status{
-    background-color: v.$color-tertiary;
-}
-
-#iconPending-xoxo{
-    display: inline-block;
-    margin-left: 1rem;
-    vertical-align: middle;
-    width: 5rem;
-    height: auto;
-}
