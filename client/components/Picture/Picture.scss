@@ -10,6 +10,20 @@
     padding-right: 2vw;
     padding-left: 2vw;
     background-color: v.$color-secondary ;
+
+    #button-transferer{
+        background-color: v.$color-primary;
+        margin-bottom: 1rem;
+        border: none;
+
+        &:hover {
+            background-color: v.$color-secondary;
+            color: v.$color-primary;
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+    }
 }
 
 #container-box{

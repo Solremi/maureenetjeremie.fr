@@ -50,9 +50,13 @@
     border: none;
     margin-top: 2rem;
     min-width: 10vw;
+    background-color: v.$color-primary;
+    color: v.$color-secondary;
   }
   
   #button:hover {
+    background-color: v.$color-secondary;
+    color: v.$color-primary;
     transform: translateY(-2px);
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
   }

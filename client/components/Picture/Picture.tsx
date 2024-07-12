@@ -102,13 +102,14 @@ function ImageUploader() {
                             </div>
     
                             <div className="field has-text-centered">
-                                <button className="button is-success" type="submit">transférer</button>
+                                <button id="button-transferer" className="button" type="submit">transférer</button>
+                                {error && <p className="has-text-danger">{error}</p>}
                             </div>
                         </form>
                     </div>
                 </div>
 
-                {error && <p className="has-text-danger">{error}</p>}
+   
 
                 <div className="box container is-flex-wrap-wrap" id="picture-container">
                     {images.length > 0 ? (
@@ -148,7 +149,6 @@ function ImageUploader() {
                     </div>
                 )}
             </div>
-            
             <Footer />
         </div>
     );
