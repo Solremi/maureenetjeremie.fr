@@ -1,61 +1,71 @@
 @use 'sass:color';
 @use '../../styles/variables' as v;
 
-form {
-    padding: 2rem;
 
-}
+.container-signup{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
 
-#h2-signup {
-    margin-top: 3rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
 
-.error-message {
-    color: #020202; 
-    background-color: #fff0f0; /* Fond légèrement rouge */
-    border: 1px solid #ff3860;
-    padding: 1rem;
-    border-radius: 5px;
-    text-align: center;
-    margin : 1rem;
-  }
 
-.success-message {
-    color: #020202; 
-    background-color: #f0fff0; /* Fond légèrement vert */
-    border: 1px solid #00ff00;
-    padding: 1rem;
-    border-radius: 5px;
-    text-align: center;
-    margin : 1rem;
-}
-
-form .button {
-    background-color: v.$color-primary;
-    text-align: center;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1rem;
-
-    &:hover {
-        background-color: v.$color-secondary;
-        color: black;
+    form {
+        padding: 2rem;
+        width: auto;
     }
-}
+    
+    #h2-signup {
+        margin-top: 3rem;
 
-#connexion {
-    color: v.$color-tertiary;
-
-    &:hover {
-        color: v.$color-primary;
     }
-}
-
-#em{
-    font-size: 0.7rem;
+    
+    .error-message {
+        color: #020202; 
+        background-color: #fff0f0; /* Fond légèrement rouge */
+        border: 1px solid #ff3860;
+        padding: 1rem;
+        border-radius: 5px;
+        text-align: center;
+        margin : 1rem;
+      }
+    
+    .success-message {
+        color: #020202; 
+        background-color: #f0fff0; /* Fond légèrement vert */
+        border: 1px solid #00ff00;
+        padding: 1rem;
+        border-radius: 5px;
+        text-align: center;
+        margin : 1rem;
+    }
+    
+    form .button {
+        background-color: v.$color-primary;
+        text-align: center;
+        color: v.$color-secondary;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 1rem;
+        margin-left: 30%;
+    
+        &:hover {
+            background-color: v.$color-secondary;
+            color: black;
+        }
+    }
+    
+    #connexion {
+        color: v.$color-tertiary;
+    
+        &:hover {
+            color: v.$color-primary;
+        }
+    }
+    
+    #em{
+        font-size: 0.7rem;
+    }
+    
 }

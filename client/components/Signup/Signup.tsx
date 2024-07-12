@@ -83,7 +83,7 @@ export default function Signup() {
     };
 
     return (
-        <div className="container" id="form-login">
+        <div className="container-signup" id="form-login">
             <div className="columns is-centered">
                 <div className="column is-half">
                     <h2 id="h2-signup" className="title is-3 has-text-centered">
@@ -174,7 +174,7 @@ export default function Signup() {
                         </div>
 
                         <div className="control form-button">
-                            <button type="submit" className="button is-primary" disabled={isLoading}>
+                            <button type="submit" className="button" disabled={isLoading}>
                                 {isLoading ? 'Chargement...' : 'S\'inscrire'}
                             </button>
                         </div>
