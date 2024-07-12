@@ -66,8 +66,8 @@ function ImageUploader() {
             <Header />
             <div id="container-page"> 
                 <div id="container-box" className="box hero-body ">
-                    <h1 title="Gallerie des souvenirs" className="title is-1  has-text-centered" id="title-gallery">
-                        Gallerie des souvenirs
+                    <h1 title="Galerie des souvenirs" className="title is-1  has-text-centered" id="title-gallery">
+                        Galerie des souvenirs
                     </h1>
                     <br />
                     <p id="text" className="subtitle has-text-centered ">

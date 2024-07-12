@@ -13,10 +13,14 @@
             color: v.$color-primary;
         }
     }
-    .input{
+    .input, .textarea {
         background-color: white;
         color: black;
-      }
+    
+        &::placeholder {
+            color: gray;
+        }
+    }
 
 
     #connexion {
