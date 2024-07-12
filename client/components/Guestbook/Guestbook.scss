@@ -44,10 +44,16 @@
       margin: 1.5rem;
     }
   }
-  .input, .textarea{
+  .input, .textarea {
     background-color: white;
     color: black;
-  }
+
+    &::placeholder {
+        color: gray; // Changez cette couleur selon vos besoins
+    }
+}
+
+
 
 
   #button {

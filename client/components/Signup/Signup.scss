@@ -8,10 +8,14 @@
     align-items: center;
 
 
-    .input{
+    .input, .textarea {
         background-color: white;
         color: black;
-      }
+    
+        &::placeholder {
+            color: gray;
+        }
+    }
 
     form {
         padding: 2rem;
