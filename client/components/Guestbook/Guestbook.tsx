@@ -10,9 +10,7 @@ export default function Goldenbook() {
     const [content, setContent] = useState<string>("");
     const [messages, setMessages] = useState<{ content: string; firstname: string }[]>([]);
     const [error, setError] = useState<string>("");
-    const [userName, setUserName] = useState<string>(() => {
-        return localStorage.getItem('userName') || '';
-    });
+    const [userName, setUserName] = useState<string>("");
     const fireworksContainer = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -95,7 +93,6 @@ export default function Goldenbook() {
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const name = event.target.value;
         setUserName(name);
-        localStorage.setItem('userName', name);
     };
 
     return (
@@ -143,9 +140,11 @@ export default function Goldenbook() {
                         </div>
                     </form>
                 </div>
-                <animated.div style={heartAnimation} className="heart-icon">
-                    💌
-                </animated.div>
+                <div id="icon-heart">
+                    <animated.div style={heartAnimation} className="heart-icon">
+                        💌
+                    </animated.div>
+                </div>
                 <div>
                     <p id="message" className="title is-4">Messages</p>
                     <div id="container-card" className="box container ">
