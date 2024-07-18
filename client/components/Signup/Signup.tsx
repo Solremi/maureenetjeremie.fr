@@ -68,7 +68,7 @@ export default function Signup() {
         } catch (error: any) {
             if (error.response) {
                 if (error.response.status === 409) {
-                    setErrorMessage('Cet utilisateur est déjà inscrit');
+                    setErrorMessage('Vas-y molo sur le bouton moussaillon. Cet utilisateur est déjà inscrit, maintenant tu dois attendre d\'être validé par l\'administrateur. Mais tu peux aussi essayer de te connecter on ne sait jamais ^^');
                 } else {
                     setErrorMessage(error.response.data.message || 'Erreur du serveur');
                 }
