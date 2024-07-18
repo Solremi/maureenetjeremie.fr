@@ -87,7 +87,7 @@ export default function Signup() {
             <div className="columns is-centered">
                 <div className="column is-half">
                     <h2 id="h2-signup" className="title is-3 has-text-centered">
-                        Inscription ou <a href="/login" id="connexion">Connexion</a>
+                        Inscription ou <a href="/" id="connexion">Connexion</a>
                     </h2>
                     <form id="signupForm" onSubmit={handleSubmit}>
                         <div className="field">

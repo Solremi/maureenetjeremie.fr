@@ -39,7 +39,7 @@ export default function Header() {
                     </a>
                 </div>
                 <div id="navbar" className="navbar-menu">
-                    <div className="navbar-end">
+                    <div id="navbar-items" className="navbar-end">
                         <Link id="items" className="navbar-item" to="/guestbook">
                         📖 Livre d'or
                         </Link>

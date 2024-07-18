@@ -53,8 +53,8 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-            <Route path="/" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/Signup" element={<Signup />} />
             <Route path="/guestbook" element={<ProtectedRoute><Guestbook /></ProtectedRoute>} />
             <Route path="/pictures" element={<ProtectedRoute><Picture /></ProtectedRoute>} />
             <Route path="/ThePlaceToBe" element={<ProtectedRoute><Place /></ProtectedRoute>} />

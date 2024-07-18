@@ -55,7 +55,7 @@ export default function Login() {
                             <div className="column is-one-third form-connexion">
                                 <h1 className="title is-3 has-text-centered">Connecte toi !</h1>
                                 <h2 className="subtitle is-5 has-text-centered">
-                                    Si tu n'es pas encore inscrit, c'est par <a href="/"><strong id='ici'>ici</strong></a>
+                                    Si tu n'es pas encore inscrit, c'est par <a href="/signup"><strong id='ici'>ici</strong></a>
                                 </h2>
                                 <div className="field">
                                     <label className="label">Email</label>
