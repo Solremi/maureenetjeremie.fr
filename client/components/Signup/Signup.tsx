@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axiosInstance from '../../axios/axios';
 import './Signup.scss';
 
@@ -16,6 +16,24 @@ export default function Signup() {
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
+    const [showError, setShowError] = useState(false);
+
+    // Fermer les modales
+    const handleCloseSuccess = () => setShowSuccess(false);
+    const handleCloseError = () => setShowError(false);
+
+    useEffect(() => {
+        if (successMessage) {
+            setShowSuccess(true);
+        }
+    }, [successMessage]);
+
+    useEffect(() => {
+        if (errorMessage) {
+            setShowError(true);
+        }
+    }, [errorMessage]);
 
     // Gestion des changements des champs du formulaire
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +81,7 @@ export default function Signup() {
             setErrorMessage('');
             setSuccessMessage('');
             setIsLoading(true);
-            const response = await axiosInstance.post('/api/signup', formData);
+            await axiosInstance.post('/api/signup', formData);
             setSuccessMessage('SUPER ! Inscription effectuée avec succès. Maintenant tu dois attendre que je valide ton inscription. Merci de ta patience.');
         } catch (error: any) {
             if (error.response) {
@@ -172,23 +190,28 @@ export default function Signup() {
                                 />
                             </div>
                         </div>
-
+                        {showSuccess && (
+                            <div className="modal-overlay">
+                                <div className="modal-content success-message">
+                                    <button className="close-button" onClick={handleCloseSuccess}>&times;</button>
+                                    <p>{successMessage}</p>
+                                </div>
+                            </div>
+                        )}
+                        {showError && (
+                            <div className="modal-overlay">
+                                <div className="modal-content error-message">
+                                    <button className="close-button" onClick={handleCloseError}>&times;</button>
+                                    <p>{errorMessage}</p>
+                                </div>
+                            </div>
+                        )}
                         <div className="control form-button">
                             <button type="submit" className="button" disabled={isLoading}>
                                 {isLoading ? 'Chargement...' : 'S\'inscrire'}
                             </button>
                         </div>
                     </form>
-                    {successMessage && (
-                        <div className="container">
-                            <p className="success-message">{successMessage}</p>
-                        </div>
-                    )}
-                    {errorMessage && (
-                        <div className="container">
-                            <p className="error-message">{errorMessage}</p>
-                        </div>
-                    )}
                 </div>
             </div>
         </div>
