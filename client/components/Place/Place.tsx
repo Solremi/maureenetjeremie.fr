@@ -16,7 +16,7 @@ export default function Place() {
                 <div id="date" className="is-desktop"> </div>
                     <div id="box-date" className="column box">
                         <h2 className="title">🗓️ Date et heure</h2>
-                        <strong><p>Le 02 novembre 2024 - 15h</p></strong>
+                        <strong><p>Le 02 novembre 2024 - 14h30</p></strong>
                     </div>
                     <div id="box-lieu" className="column is-full box">
                         <h2 className="title">Lieu : 51 Rue d'Anchin, 59146 Pecquencourt</h2>
