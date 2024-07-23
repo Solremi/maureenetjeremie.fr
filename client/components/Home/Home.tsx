@@ -41,7 +41,14 @@ export default function Home() {
               Bienvenue sur notre site de mariage
             </h1>
           </div>
+          <div id="compte-a-rebour" className="container  has-text-centered">
+                <h2>🚀  Mise à feu dans.. </h2>
+                <div className="box has-text-centered ">
+                    <h3 className="title is-4">{timeLeft}</h3>
+                </div>
+            </div>
         </div>
+      
       </section>
 
       <section className="section">
@@ -76,23 +83,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="news" className="hero">
-        <div className="hero-body">
-            <div className="container is-half has-text-centered">
-                <h2>🚀  Decollage dans.. </h2>
-                <div className="box has-text-centered ">
-                    <h3 className="title is-4">{timeLeft}</h3>
+      <section className="hero">
+        <div id="news" className="hero-body">
+        <h2 id="news-h2">News</h2>
+
+            <div dir="news-container" className="container">
+              <div className="container">
+                <div className="columns">
+                  <div className="column is-half">
+                    <div id="news-box" className="box ">
+                      <h3>Pour les kids</h3>
+                      <p>Il y aura à disposition deux petites salles dans lesquelles les enfants pourront se reposer. Il vous faudra prévoir des matelas gonflables ou lit parapluie.
+                      </p>
+                    </div>
+                  </div>
                 </div>
+
+              </div>
+             
             </div>
-            <div className="container">
-                <h2>News</h2>
-            <div id="news-box" className="box">
-                <h3>Pour les kids</h3>
-                <p>Il y aura à disposition deux petites salles dans lesquelles les enfants pourront se reposer. Il vous faudra prévoir des matelas gonflables ou lit parapluie.
-                </p>
-            </div>
-            </div>
-            
         </div>
       </section>
       <Footer />
