@@ -1,9 +1,9 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axiosInstance from '../../axios/axios';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './Signup.scss';
 
 export default function Signup() {
-    // États du formulaire
     const [formData, setFormData] = useState({
         lastname: '',
         firstname: '',
@@ -12,14 +12,13 @@ export default function Signup() {
         confirmPassword: ''
     });
 
-    // États des messages
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
     const [showError, setShowError] = useState(false);
+    const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
-    // Fermer les modales
     const handleCloseSuccess = () => setShowSuccess(false);
     const handleCloseError = () => setShowError(false);
 
@@ -35,7 +34,6 @@ export default function Signup() {
         }
     }, [errorMessage]);
 
-    // Gestion des changements des champs du formulaire
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData({
@@ -44,7 +42,6 @@ export default function Signup() {
         });
     };
 
-    // Validation du formulaire
     const validateForm = () => {
         const { password, confirmPassword, email, firstname, lastname } = formData;
 
@@ -64,10 +61,13 @@ export default function Signup() {
             return 'Le mot de passe doit contenir au moins 1 majuscule, 1 minuscule, 1 chiffre et avoir une longueur minimale de 9 caractères.';
         }
 
+        if (!recaptchaToken) {
+            return 'Veuillez compléter le reCAPTCHA';
+        }
+
         return '';
     };
 
-    // Soumission du formulaire
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const validationError = validateForm();
@@ -81,7 +81,7 @@ export default function Signup() {
             setErrorMessage('');
             setSuccessMessage('');
             setIsLoading(true);
-            await axiosInstance.post('/api/signup', formData);
+            await axiosInstance.post('/api/signup', { ...formData, recaptchaToken });
             setSuccessMessage('SUPER ! Inscription effectuée avec succès. Maintenant tu dois attendre que je valide ton inscription. Merci de ta patience.');
         } catch (error: any) {
             if (error.response) {
@@ -98,6 +98,10 @@ export default function Signup() {
         } finally {
             setIsLoading(false);
         }
+    };
+
+    const handleRecaptchaChange = (token: string | null) => {
+        setRecaptchaToken(token);
     };
 
     return (
@@ -190,6 +194,14 @@ export default function Signup() {
                                 />
                             </div>
                         </div>
+
+                        <div className="g-recaptcha">
+                            <ReCAPTCHA
+                                sitekey="6LfFehYqAAAAAN7XSa93DJ7Kcliu-iH10Oxy7Z5W"
+                                onChange={handleRecaptchaChange}
+                            />
+                        </div>
+
                         {showSuccess && (
                             <div className="modal-overlay">
                                 <div className="modal-content success-message">
