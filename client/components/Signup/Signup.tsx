@@ -1,6 +1,5 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axiosInstance from '../../axios/axios';
-import ReCAPTCHA from 'react-google-recaptcha';
 import './Signup.scss';
 
 export default function Signup() {
@@ -17,7 +16,6 @@ export default function Signup() {
     const [isLoading, setIsLoading] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
     const [showError, setShowError] = useState(false);
-    const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
     const handleCloseSuccess = () => setShowSuccess(false);
     const handleCloseError = () => setShowError(false);
@@ -61,10 +59,6 @@ export default function Signup() {
             return 'Le mot de passe doit contenir au moins 1 majuscule, 1 minuscule, 1 chiffre et avoir une longueur minimale de 9 caractères.';
         }
 
-        if (!recaptchaToken) {
-            return 'Veuillez compléter le reCAPTCHA';
-        }
-
         return '';
     };
 
@@ -81,7 +75,7 @@ export default function Signup() {
             setErrorMessage('');
             setSuccessMessage('');
             setIsLoading(true);
-            await axiosInstance.post('/api/signup', { ...formData, recaptchaToken });
+            await axiosInstance.post('/api/signup', { ...formData });
             setSuccessMessage('SUPER ! Inscription effectuée avec succès. Maintenant tu dois attendre que je valide ton inscription. Merci de ta patience.');
         } catch (error: any) {
             if (error.response) {
@@ -100,9 +94,7 @@ export default function Signup() {
         }
     };
 
-    const handleRecaptchaChange = (token: string | null) => {
-        setRecaptchaToken(token);
-    };
+  
 
     return (
         <div className="container-signup" id="form-login">
@@ -195,13 +187,7 @@ export default function Signup() {
                             </div>
                         </div>
 
-                        <div className="g-recaptcha">
-                            <ReCAPTCHA
-                                sitekey="6LfFehYqAAAAAN7XSa93DJ7Kcliu-iH10Oxy7Z5W"
-                                onChange={handleRecaptchaChange}
-                            />
-                        </div>
-
+                
                         {showSuccess && (
                             <div className="modal-overlay">
                                 <div className="modal-content success-message">
