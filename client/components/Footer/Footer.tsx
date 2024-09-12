@@ -14,7 +14,8 @@ export default function Footer() {
                 </div>
                 <div className="footer-section">
                     <p>
-                        <Link to="/mentions-legales">Mentions légales</Link> | <Link to="/conditions-cookies">Politique de Cookies</Link>
+                        <Link to="/mentions-legales">Mentions légales</Link> | <Link to="/conditions-cookies">Politique de Cookies</Link> | 
+                        <Link to="/partenaires"> Partenaires</Link>
                     </p>
                 </div>
             </div>

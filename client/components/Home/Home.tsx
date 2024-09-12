@@ -83,23 +83,32 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="hero">
+      <section id="section-news" className="hero">
         <div id="news" className="hero-body">
           <h2 id="news-h2">News</h2>
             <div dir="news-container" className="container">
               <div className="container">
-                <div className="columns">
+                <div className="columns is-centered">
                   <div className="column is-half">
                     <div id="news-box" className="box ">
                       <h3>Pour les kids</h3>
-                      <p>Il y aura à disposition deux petites salles dans lesquelles les enfants pourront se reposer. Il vous faudra prévoir des matelas gonflables ou lit parapluie, nous ne pourrons pas fournir, nous avons épuisé notre stock.
+                      <p>Il y aura à disposition deux petites salles dans lesquelles les enfants pourront se reposer. Il vous faudra prévoir des matelas gonflables ou lit parapluie, nous ne pourrons pas fournir, nous avons épuisé notre stock. Si vous êtes en difficulté, n'hésitez pas à nous contacter, nous ferons notre possible pour vous aider.
                       </p>
                     </div>
                   </div>
                 </div>
-
               </div>
-             
+              <div className="container">
+                <div className="columns is-centered">
+                  <div className="column is-half">
+                    <div id="news-box" className="box ">
+                      <h3>Concernant le repas</h3>
+                      <p>Afin que votre repas se passe dans les meilleures conditions, merci de nous indiquer par email ou téléphone, si vous avez des allergies alimentaires. Nous essaierons d'adapter le menu pour vous.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
       </section>

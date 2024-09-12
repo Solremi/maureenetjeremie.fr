@@ -2,6 +2,8 @@
 @use '../../styles/variables' as v;
 
 .footer-container{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     background-color: v.$color-primary;
     color: v.$color-secondary;
     a{
