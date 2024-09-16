@@ -37,6 +37,16 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   return <>{children}</>;
 };
 
+const PublicRoute = ({ children }: { children: ReactNode }) => {
+  const { isAuthenticated } = useContext(AuthContext);
+
+  if (isAuthenticated) {
+    return <Navigate to="/home" replace />;
+  }
+
+  return <>{children}</>;
+};
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
     // Récupérer l'état d'authentification depuis localStorage
@@ -55,7 +65,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<PublicRoute><Login /></PublicRoute>} />
             <Route path="/Signup" element={<Signup />} />
             <Route path="/guestbook" element={<ProtectedRoute><Guestbook /></ProtectedRoute>} />
             <Route path="/pictures" element={<ProtectedRoute><Picture /></ProtectedRoute>} />

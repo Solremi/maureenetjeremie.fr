@@ -25,4 +25,16 @@ router.get('/api/picture',  cw(picture.getImages));
 router.post('/api/evj', cw(evj.uploadImage));
 router.get('/api/evj',  cw(evj.getImages));
 
+// Redirection basée sur les cookies pour la route principale "/"
+router.get('/', (req, res) => {
+    // Vérification si un cookie "isLoggedIn" existe
+    if (req.cookies.isLoggedIn) {
+        // Redirige automatiquement l'utilisateur vers /home s'il a le cookie
+        return res.redirect('/home');
+    }
+
+    // Si pas de cookie, renvoyer la page d'accueil par défaut
+    res.sendFile('index.html', { root: 'public' });
+});
+
 export default router;

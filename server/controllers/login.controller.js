@@ -29,9 +29,14 @@ export const loginUser = async (req, res) => {
             return res.status(403).json({ error: "Compte non activé" });
         }
 
-        req.session.user = user;
+        req.session.user = {
+            id: user.id,
+            email: user.email
+        };
+        res.cookie('isLoggedIn', true, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true }); // Cookie valable 24h
 
-        return res.status(200).json({ message: "Connexion réussie" });
+
+        return res.status(200).json({ message: "Connexion réussie", redirectTo: "/home" });
 
     } catch (error) {
         return res.status(500).json({ error: "Erreur interne du serveur" });
