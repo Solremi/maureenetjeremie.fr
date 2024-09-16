@@ -25,7 +25,7 @@ export async function getImages(req, res) {
     try {
         // Utilisez l'instance de evjDataMapper
         const pictures = await evjDataMapper.findAll();
-        res.status(200).json(pictures);
+        res.status(200).json(pictures || []);  // Toujours renvoyer un tableau
     } catch (error) {
         console.error('Error in getImages:', error);
         res.status(500).json({ error: error.message });

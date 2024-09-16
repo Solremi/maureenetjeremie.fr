@@ -15,7 +15,8 @@ function ImageUploader() {
         const fetchImages = async () => {
             try {
                 const response = await axiosInstance.get('/api/evj');
-                setImages(response.data);
+                console.log(response.data); // Affichez la réponse pour vérifier la structure
+                setImages(Array.isArray(response.data) ? response.data : []); // Assurez-vous que c'est un tableau
             } catch (error) {
                 setError('Error fetching images');
             }
