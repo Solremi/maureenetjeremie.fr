@@ -12,6 +12,7 @@ import Pending from '../Pending/Pending';
 import LegalNotice from '../MentionsLegales/MentionsLegales';
 import CookiePolicy from '../ConditionCookie/ConditionCookie';
 import Partenaires from '../Partenaires/Partenaires';
+import Evj from '../Evj/Evj';
 import './App.scss';
 
 // Create the Authentication Context
@@ -64,6 +65,7 @@ function App() {
             <Route path="/conditions-cookies" element={<CookiePolicy />} />
             <Route path="/partenaires" element={<Partenaires />} />
             <Route path="/pending" element={<Pending />} />
+            <Route path="/evj" element={<ProtectedRoute><Evj /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

@@ -4,6 +4,7 @@ import * as login from "../controllers/login.controller.js";
 import * as guestbook from "../controllers/guestbook.controller.js";
 import { userSession } from '../controllers/session.controller.js';
 import * as picture from "../controllers/picture.controller.js";
+import * as evj from "../controllers/evj.controller.js";
 import cw from "../middlewares/controllerWrapper.middleware.js";
 
 const router = express.Router();
@@ -20,5 +21,8 @@ router.get('/api/session', userSession);
 
 router.post('/api/picture', cw(picture.uploadImage));
 router.get('/api/picture',  cw(picture.getImages));
+
+router.post('/api/evj', cw(evj.uploadImage));
+router.get('/api/evj',  cw(evj.getImages));
 
 export default router;

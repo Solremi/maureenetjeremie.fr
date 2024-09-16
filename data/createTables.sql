@@ -44,4 +44,5 @@ CREATE TABLE "picture" (
     "updated_at" TIMESTAMPTZ
 );
 
+
 COMMIT;

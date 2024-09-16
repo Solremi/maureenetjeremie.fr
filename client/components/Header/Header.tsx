@@ -40,6 +40,9 @@ export default function Header() {
                 </div>
                 <div id="navbar" className="navbar-menu">
                     <div id="navbar-items" className="navbar-end">
+                    <Link id="items" className="navbar-item" to="/evj">
+                        🍻EVJF - H
+                        </Link>
                         <Link id="items" className="navbar-item" to="/guestbook">
                         📖 Livre d'or
                         </Link>
