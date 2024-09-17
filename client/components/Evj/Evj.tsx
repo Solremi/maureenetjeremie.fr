@@ -39,7 +39,6 @@ function ImageUploader() {
         }
 
         try {
-            // Transformer les fichiers sélectionnés en base64
             const imagesToUpload = await Promise.all(
                 selectedFiles.map(file => {
                     return new Promise<{ data: string, name: string }>((resolve, reject) => {
@@ -56,26 +55,22 @@ function ImageUploader() {
                 })
             );
 
-            // Envoyer les données au serveur
             await axiosInstance.post('/api/evj', { images: imagesToUpload });
-            
-            // Vider la sélection des fichiers après l'upload
             setSelectedFiles([]);
-            
             // Réactualiser la liste des images
             const response = await axiosInstance.get('/api/evj');
             setImages(response.data);
-        } catch (error: any) {
-            setError(error.response?.data?.error || 'Erreur lors de l\'upload des images');
+        } catch (error) {
+            setError('Erreur lors de l\'upload des images');
         }
     };
 
-    // Gérer le clic sur l'image pour ouvrir la modal
+    // Fonction pour ouvrir la modal avec l'image
     const handleImageClick = (imageSrc: string) => {
         setModalImage(imageSrc);
     };
 
-    // Fermer la modal
+    // Fonction pour fermer la modal
     const closeModal = () => {
         setModalImage(null);
     };
@@ -86,7 +81,7 @@ function ImageUploader() {
             <div id="container-page">
                 <div id="container-box" className="box hero-body">
                     <h1 title="Galerie des souvenirs" className="title is-1 has-text-centered" id="title-gallery">
-                        Souvenirs de notre enterrement 🙊
+                        Souvenirs de <s>son</s> notre enterrement 🙊
                     </h1>
                     <p id="text" className="subtitle has-text-centered">
                         Nous avons passé un moment inoubliable 🥰,<br />nous avons beaucoup de chance de vous avoir.
@@ -138,16 +133,21 @@ function ImageUploader() {
                                 <div className="card">
                                     <div className="card-image">
                                         <figure className="image">
-                                            <img 
-                                                src={image.data} 
-                                                alt={image.name} 
-                                                style={{ width: "100vw", height: "auto" }} 
+                                            {/* Clic sur l'image pour ouvrir la modal */}
+                                            <img
+                                                src={image.data}
+                                                alt={image.name}
+                                                style={{ width: "100vw", height: "auto" }}
                                                 onClick={() => handleImageClick(image.data)}
+                                                role="button"
                                             />
                                         </figure>
                                     </div>
                                     <div id="card-content" className="card-content">
-                                        <p id="picture-name" className="title has-text-white">{image.name}</p>
+                                        {/* Lien pour télécharger l'image */}
+                                        <a href={image.data} download={image.name} className="button is-small">
+                                            Télécharger
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -157,6 +157,7 @@ function ImageUploader() {
                     )}
                 </div>
 
+                {/* Modal pour afficher l'image en grand */}
                 {modalImage && (
                     <div className="modal is-active">
                         <div className="modal-background" onClick={closeModal}></div>

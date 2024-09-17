@@ -127,7 +127,9 @@ function ImageUploader() {
                                         </figure>
                                     </div>
                                     <div id="card-content" className="card-content">
-                                        <p id="picture-name" className="title has-text-white">{image.name}</p>
+                                    <a href={image.data} download={image.name} className="button is-small">
+                                            Télécharger
+                                        </a>
                                     </div>
                                 </div>
                             </div>
