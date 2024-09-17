@@ -17,7 +17,7 @@ const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
 
 // Middleware pour parser les corps de requêtes
-app.use(bodyParser.json({ limit: '10mb' })); // Support for large image payloads
+app.use(bodyParser.json({ limit: '50mb' })); // Support for large image payloads
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 // Activation CORS
