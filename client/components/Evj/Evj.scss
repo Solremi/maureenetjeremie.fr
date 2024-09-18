@@ -26,7 +26,11 @@
     
         }
     }
-    
+    .subtitle{
+        font-size: 1.5rem;
+        color: v.$color-primary;
+        margin: 1rem;
+    }
     #container-box{
         display: flex;
         flex-direction: column;
@@ -38,11 +42,13 @@
         min-width: 40vw ;
         background-color: v.$color-secondary ;
         border: 2px solid v.$color-primary;
-    
+        margin: 3rem;
+
     
         h1{
             text-align: center;
             margin-top: 1rem;
+            margin-bottom: 1rem;
             font-size: 3rem;
             color: v.$color-primary;
         }

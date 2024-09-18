@@ -17,8 +17,8 @@ const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
 
 // Middleware pour parser les corps de requêtes
-app.use(bodyParser.json({ limit: '50mb' })); // Support for large image payloads
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+app.use(bodyParser.json({ limit: '1gb' })); // Support for large image payloads
+app.use(bodyParser.urlencoded({ limit: '1gb', extended: true }));
 
 // Activation CORS
 app.use(cors(corsOptions));
@@ -62,5 +62,7 @@ app.use((err, req, res, next) => {
 httpServer.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
 
 export default app;

@@ -21,9 +21,9 @@ export default function Place() {
                     <div id="box-lieu" className="column is-full box">
                         <h2 className="title">Lieu : 51 Rue d'Anchin, 59146 Pecquencourt</h2>
 
-                        <img id="photo-1" src="/public/images/salleGoogle.png" alt="plan de la salle des fêtes" />
+                        <img id="photo-1" src="images/salleGoogle.png" alt="plan de la salle des fêtes" />
 
-                        <img id="photo-2" src="/public/images/entreeSalle.png" alt="photo de la salle des fêtes" />
+                        <img id="photo-2" src="images/entreeSalle.png" alt="photo de la salle des fêtes" />
                         
                     <div id="box-fin" className="box">
                          <strong><p>Ensuite, il y a deux entrées on commence à droite !</p></strong>

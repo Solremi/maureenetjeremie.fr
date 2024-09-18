@@ -5,76 +5,115 @@ import axiosInstance from "../../axios/axios";
 import "./Picture.scss";
 
 function ImageUploader() {
-    const [image, setImage] = useState<string | ArrayBuffer | null>(null);
-    const [name, setName] = useState('');
     const [images, setImages] = useState<{ data: string, name: string }[]>([]);
+    const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [modalImage, setModalImage] = useState<string | null>(null);
+    const [loadingImages, setLoadingImages] = useState<boolean>(true); // Gestion du chargement des images
+    const [uploading, setUploading] = useState<boolean>(false);
 
+    // Fetch des images depuis le backend
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axiosInstance.get('/api/picture');
-                setImages(response.data);
+                const response = await axiosInstance.get("/api/picture");
+                const imagesData = Array.isArray(response.data) ? response.data : [];
+                setImages(imagesData);
             } catch (error) {
-                setError('Error fetching images');
+                console.error("Erreur lors du chargement des images :", error);
+                setError("Erreur lors du chargement des images.");
+            } finally {
+                setLoadingImages(false);
             }
         };
         fetchImages();
     }, []);
 
+    // Gestion de la sélection de plusieurs fichiers
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onloadend = () => {
-                setImage(reader.result);
-                setName(file.name);
-            };
+        if (e.target.files) {
+            setSelectedFiles(Array.from(e.target.files)); // Conversion en tableau
         }
     };
 
+    // Soumettre le formulaire pour uploader plusieurs images
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!image) {
-            setError("Choisi une image à partager.");
+        setError(null);
+        if (selectedFiles.length === 0) {
+            setError("Choisi des images à partager.");
             return;
         }
+        if (selectedFiles.length > 10) {
+            setError("Tu ne peux pas uploader plus de 10 photos à la fois.");
+            return;
+        }
+
+        setUploading(true); // Activer l'état de chargement
+
         try {
-            await axiosInstance.post('/api/picture', { data: image, name });
-            setImage(null);
-            setName('');
-            // Refresh the image list
-            const response = await axiosInstance.get('/api/picture');
+            const imagesToUpload = await Promise.all(
+                selectedFiles.map((file) => {
+                    return new Promise<{ data: string; name: string }>((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onloadend = () => {
+                            if (reader.result) {
+                                resolve({ data: reader.result as string, name: file.name });
+                            } else {
+                                reject(new Error("Erreur lors de la lecture du fichier"));
+                            }
+                        };
+                    });
+                })
+            );
+
+            await axiosInstance.post("/api/picture", { images: imagesToUpload });
+            setSelectedFiles([]);
+            // Réactualiser la liste des images
+            const response = await axiosInstance.get("/api/picture");
             setImages(response.data);
         } catch (error) {
-            setError('Error uploading image');
+            console.error("Erreur lors de l'upload des images :", error);
+            setError("Erreur lors de l'upload des images.");
+        } finally {
+            setUploading(false); // Désactiver l'état de chargement
         }
     };
 
+    // Fonction pour ouvrir la modal avec l'image
     const handleImageClick = (imageSrc: string) => {
         setModalImage(imageSrc);
     };
 
+    // Fonction pour fermer la modal
     const closeModal = () => {
         setModalImage(null);
     };
 
+    // Fermeture de la modal avec le bouton "Escape"
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []);
+
     return (
         <div className="picture">
             <Header />
-            <div id="container-page"> 
-                <div id="container-box" className="box hero-body ">
-                    <h1 title="Galerie des souvenirs" className="title is-1  has-text-centered" id="title-gallery">
-                        Galerie des souvenirs
+            <div id="container-page">
+                <div id="container-box" className="box hero-body">
+                    <h1 className="title is-1 has-text-centered" id="title-gallery">
+                        Galerie de Photos
                     </h1>
-                    <br />
-                    <p id="text" className="subtitle has-text-centered ">
-                        Partagez vos plus belles photos avec nous et regardez celles des autres. <br />Vous pouvez même faire un cherche et trouve si ça vous tente <br /> <em>formats (.png .jpeg .jpg, .webp )</em>
-                    </p>
-                    <p id="text" className="subtitle has-text-centered ">
-                        Vous pouvez télécharger les photos qui s'affichent ci-dessous en faisant un clique droit à la souris, puis télécharger "enregistrer l'image sous ".
+                    <p className="subtitle has-text-centered">
+                        Partagez vos plus belles photos du mariage 📸
                     </p>
                 </div>
 
@@ -84,50 +123,58 @@ function ImageUploader() {
                             <div className="field">
                                 <div className="file is-light">
                                     <label className="file-label">
-                                        <input className="file-input" type="file" name="image" accept="image/*" onChange={handleFileChange} />
+                                        <input
+                                            className="file-input"
+                                            type="file"
+                                            name="images"
+                                            accept="image/*"
+                                            multiple
+                                            onChange={handleFileChange}
+                                        />
                                         <div id="choose-box" className="box">
-                                            <span id="chooseFile" className="file-cta">
-                                                <span className="file-label">Choisi une photo ici…</span>
+                                            <span className="file-cta">
+                                                <span className="file-label">Choisi max 10 photos ici</span>
                                             </span>
-                                            <span id="choosenFile">
-                                                {name && (
+                                            {selectedFiles.length > 0 && (
                                                 <div className="field has-text-centered">
-                                                    <p>{name}</p>
+                                                    <p>{selectedFiles.length} fichier(s) sélectionné(s)</p>
                                                 </div>
-                                                )}
-                                            </span>
+                                            )}
                                         </div>
                                     </label>
                                 </div>
                             </div>
-    
+
                             <div className="field has-text-centered">
-                                <button id="button-transferer" className="button" type="submit">transférer</button>
+                                <button id="button-transferer" className="button" type="submit" disabled={uploading}>
+                                    {uploading ? "Transfert en cours..." : "Transférer"}
+                                </button>
                                 {error && <p className="has-text-danger">{error}</p>}
                             </div>
                         </form>
                     </div>
                 </div>
 
-   
-
+                {/* Affichage des images */}
                 <div className="box container is-flex-wrap-wrap" id="picture-container">
                     {images.length > 0 ? (
                         images.map((image, index) => (
-                            <div id="Onecard" className="column is-full-mobile is-one-third-tablet is-one-quarter-desktop" key={index}>
+                            <div className="column is-full-mobile is-one-third-tablet is-one-quarter-desktop" key={index}>
                                 <div className="card">
                                     <div className="card-image">
                                         <figure className="image">
-                                            <img 
-                                                src={image.data} 
-                                                alt={image.name} 
-                                                style={{ width: "100vw", height: "auto" }} 
+                                            <img
+                                                loading="lazy"
+                                                src={image.data}
+                                                alt={image.name}
+                                                style={{ width: "100vw", height: "auto" }}
                                                 onClick={() => handleImageClick(image.data)}
+                                                role="button"
                                             />
                                         </figure>
                                     </div>
-                                    <div id="card-content" className="card-content">
-                                    <a href={image.data} download={image.name} className="button is-small">
+                                    <div className="card-content has-text-centered">
+                                        <a href={image.data} download={image.name} className="button is-small">
                                             Télécharger
                                         </a>
                                     </div>
@@ -135,10 +182,11 @@ function ImageUploader() {
                             </div>
                         ))
                     ) : (
-                        <p>Aucune image disponible.</p>
+                        <p>images disponibles.</p>
                     )}
                 </div>
 
+                {/* Modal pour afficher l'image en grand */}
                 {modalImage && (
                     <div className="modal is-active">
                         <div className="modal-background" onClick={closeModal}></div>
@@ -148,6 +196,17 @@ function ImageUploader() {
                             </p>
                         </div>
                         <button className="modal-close is-large" aria-label="close" onClick={closeModal}></button>
+                    </div>
+                )}
+
+                {/* Modal de chargement des images */}
+                {loadingImages && (
+                    <div className="modal is-active">
+                        <div className="modal-background" onClick={() => setLoadingImages(false)}></div>
+                        <div className="modal-content is-small box has-text-centered">
+                            <p>Chargement des images... Patientez un instant.</p>
+                        </div>
+                        <button className="delete" onClick={() => setLoadingImages(false)} aria-label="close"></button>
                     </div>
                 )}
             </div>
